@@ -23,3 +23,20 @@ export const all_users = () => {
       })
       return [users, isPending, refetch]
 } 
+
+export const getAllDeliveryMen = () => {
+    const { isPending, error, data:DeliveryMen, refetch } = useQuery({
+        queryKey: ['allAllDeliveryMen'],
+        queryFn: async () => {
+            const res = axiosSecure.get("/allAllDeliveryMen")
+            return res
+        }
+      })
+      return [DeliveryMen, isPending, refetch]
+}
+
+
+export const getUser = async (email) => {
+    const res = await axiosSecure.get(`/user/${email}`)
+    return res.data
+}

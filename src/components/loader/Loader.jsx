@@ -1,8 +1,9 @@
 import React from 'react'
+import loadding from "../../../public/feture.json"
 
 const Loader = () => {
   return (
-    <div>Loader</div>
+    <div>Loaderr</div>
   )
 }
 

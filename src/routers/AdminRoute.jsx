@@ -8,18 +8,11 @@ const AdminRoute = ({ children }) => {
   const [role, isPending] = useRole();
   const { user, loadding } = useContext(authContext);
 
-  if (loadding || isPending || user ) {
-    return <Loader />
-  };
+  if (isPending, loadding) {
+    return <Loader />;
+  }
 
-if(role) {
-    if (role == "admin") {
-        return children;
-      } else {
-        return <Navigate to={"/"} />;
-      }
-}
-  
+  return role === "admin" ? children : <Navigate to={"/"} ></Navigate>
 };
 
 export default AdminRoute;

@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Best Service",
+    "desc": "Our mission is to attract and retain customers by providing Best in Class transportation solutions and fostering a profitable, disciplined culture of safety.",
+    "Icon": "ThumbUpIcon"
+  },
+  {
+    "title": "Reputation",
+    "desc": "We have established a strong presence in the transportation industry. Our award-winning services earn a reputation for quality and excellence that few can riva",
+    "Icon": "PeopleAltIcon"
+  },
+  {
+    "title": "Safety & Security",
+    "desc": "Safety for our employees, customers and motoring public will always remain our primary focus in all the policies, procedures and programs that govern our business.",
+    "Icon": "HealthAndSafetyIcon"
+  }
+]

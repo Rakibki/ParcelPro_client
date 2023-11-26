@@ -10,7 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
-import { createToken } from "../../api/auth";
+import { createToken, createUserDB } from "../../api/auth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 export const authContext = createContext(null);
@@ -19,7 +19,6 @@ const AuthProvaider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loadding, setLoadding] = useState(true);
   const axiosSecure = useAxiosSecure();
-
 
   const createUser = (email, password) => {
     setLoadding(true);
@@ -61,9 +60,16 @@ const AuthProvaider = ({ children }) => {
       setLoadding(false);
 
       const logginUser = user?.email || currentUser?.email;
+      const LoginUser = {
+        email: user?.email || currentUser?.email,
+        name: user?.displayName || currentUser?.displayName,
+        role: "user",
+        image: user?.photoURL || currentUser?.photoURL
+      }
 
       if (logginUser) {
         createToken({ logginUser });
+        createUserDB(LoginUser);
       } else {
         axiosSecure.post("/jwt");
       }
@@ -74,6 +80,7 @@ const AuthProvaider = ({ children }) => {
     });
   }, [user]);
 
+  console.log(user);
 
   const userInfo = {
     user,

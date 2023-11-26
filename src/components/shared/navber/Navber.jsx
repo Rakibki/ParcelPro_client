@@ -1,110 +1,223 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { authContext } from "../../../providers/authProvider/AuthProvider";
+import useRole from "../../../hooks/useRole";
+import Loader from "../../loader/Loader";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
+import Badge from "@mui/material/Badge";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import logo from "../../../assets/images/logo.png";
+import { Grid, Stack } from "@mui/material";
+import PrimayButton from "../button/PrimayButton";
 
 const Navber = () => {
   const { user, logOut } = useContext(authContext);
+  const [role, isPending] = useRole();
 
-  const navItem = (
-    <div>
-      <li>
-        <NavLink to={"/"}>Home</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/secret"}>Serety</NavLink>
-      </li>
-    </div>
-  );
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const handleLogOut = () => {
-    logOut()
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  if (isPending && role) {
+    return <Loader />;
   }
 
-  return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            {navItem}
-          </ul>
-        </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navItem}</ul>
-      </div>
-      <div className="navbar-end">
-        <button className="btn">
-          <div className="indicator">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
-            <span className="badge badge-xs badge-primary indicator-item"></span>
-          </div>
-        </button>
+  const handleLogout = () => {
+    logOut();
+  };
 
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a className="justify-between">Profile</a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            {user?.email ? (
-              <li onClick={handleLogOut}>
-                <a>Logout</a>
-              </li>
-            ) : (
-              <li>
-                <Link to={"/login"}> <a>Login</a> </Link>
-              </li>
-            )}
-          </ul>
-        </div>
-      </div>
-    </div>
+  const navItems = (
+    <Grid sx={{ marginX: "auto" }}>
+      <Stack direction="row">
+        <MenuItem onClick={handleCloseNavMenu}>
+          <Typography textAlign="center">Home</Typography>
+        </MenuItem>
+        <MenuItem onClick={handleCloseNavMenu}>
+          <Typography textAlign="center">About</Typography>
+        </MenuItem>
+        <MenuItem onClick={handleCloseNavMenu}>
+          <Typography textAlign="center">Contact</Typography>
+        </MenuItem>
+      </Stack>
+    </Grid>
+  );
+
+  return (
+    <Grid marginX={"auto"} maxWidth={"1200px"}>
+      <AppBar
+        sx={{
+          bgcolor: "#000000b3",
+          position: "fixed",
+          zIndex: "54545",
+          paddingY: "10px",
+          maxWidth: "1200px",
+        }}
+        position="static"
+      >
+        <Container>
+          <Toolbar disableGutters>
+            <Grid sx={{ width: "150px" }}>
+              <Link to={"/"}>
+                <img src={logo} alt="" />
+              </Link>
+            </Grid>
+
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              ></Menu>
+            </Box>
+            <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              LOGO
+            </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              {navItems}
+            </Box>
+
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                {user?.email ? (
+                  <div onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      sx={{ border: "2px solid #f0b913" }}
+                      alt="Remy Sharp"
+                      src={user?.photoURL}
+                    />
+                  </div>
+                ) : (
+                  <Link to="/login">
+                    <PrimayButton>Login</PrimayButton>
+                  </Link>
+                )}
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {user?.email ? (
+                  <Grid padding={2}>
+                    <Typography
+                      textAlign={"center"}
+                      mb-2
+                      sx={{ fontSize: "17px", fontWeight: "500" }}
+                      variant="h6"
+                      component="h6"
+                    >
+                      {user?.displayName}
+                    </Typography>
+
+                    <Link to={"/dashboard"}>
+                      <MenuItem>
+                        <Typography textAlign="center">Dashboard</Typography>
+                      </MenuItem>
+                    </Link>
+
+                    <MenuItem mb-2 onClick={handleLogout}>
+                      <Typography textAlign="center">Logout</Typography>
+                    </MenuItem>
+                  </Grid>
+                ) : (
+                  <>
+                    <Link to={"/login"}>
+                      <MenuItem>
+                        <Typography textAlign="center">Login</Typography>
+                      </MenuItem>
+                    </Link>
+                  </>
+                )}
+              </Menu>
+            </Box>
+            <MenuItem>
+              <IconButton
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={17} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+            </MenuItem>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </Grid>
   );
 };
 
