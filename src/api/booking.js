@@ -17,3 +17,9 @@ export const updateStatus = async (id, delivaryMenId) => {
    const res = await axiosSecure.put(`/booking/${id}`, {delivaryMenId})
    return res
 } 
+
+export const updateParcelStatus = async (id, status) => {
+   const res = await axiosSecure.put(`/updateParcelStatus/${id}`, {status})
+   return res
+} 
+

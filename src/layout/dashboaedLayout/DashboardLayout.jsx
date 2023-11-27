@@ -7,13 +7,13 @@ import useRole from "../../hooks/useRole";
 import Loader from "../../components/loader/Loader";
 import { Grid } from "@mui/material";
 import logo from "../../assets/images/logo.png";
-import LogoutIcon from '@mui/icons-material/Logout';
-import PersonIcon from '@mui/icons-material/Person';
+import LogoutIcon from "@mui/icons-material/Logout";
+import PersonIcon from "@mui/icons-material/Person";
 import { authContext } from "../../providers/authProvider/AuthProvider";
 
 const DashboardLayout = () => {
   const [role, isPending] = useRole();
-  const {logOut} = useContext(authContext)
+  const { logOut } = useContext(authContext);
 
   if (isPending) {
     return <Loader />;
@@ -40,19 +40,25 @@ const DashboardLayout = () => {
             {role === "user" ? <UserMenu /> : ""}
             {role === "Delivery_Men" ? <DeliveryMenMenu /> : ""} */}
             <AdminMenu />
-             {/* <UserMenu /> */}
-          {/* <DeliveryMenMenu /> */}
+            <UserMenu />
+            <DeliveryMenMenu />
           </Grid>
           <Grid fontSize={18} paddingX={4} bottom={30} position={"absolute"}>
             <Grid marginBottom={1}>
-              <NavLink onClick={logOut}><LogoutIcon />Logout</NavLink>
+              <NavLink onClick={logOut}>
+                <LogoutIcon />
+                Logout
+              </NavLink>
             </Grid>
             <Grid marginBottom={1}>
-              <NavLink to={"/dashboard/profile"}><PersonIcon />Profile</NavLink>
+              <NavLink to={"/dashboard/profile"}>
+                <PersonIcon />
+                Profile
+              </NavLink>
             </Grid>
           </Grid>
         </Grid>
-        <Grid maxHeight={'100vh'} overflow={"scroll"} xs={9} item>
+        <Grid maxHeight={"100vh"} overflow={"scroll"} xs={9} item>
           <Outlet />
         </Grid>
       </Grid>

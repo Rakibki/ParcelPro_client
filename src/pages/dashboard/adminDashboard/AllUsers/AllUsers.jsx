@@ -39,6 +39,7 @@ const AllUsers = () => {
 
   const handleMakeDeliveryMan = (id) => {
     makeDeliveryMan(id)
+    alert(id)
     .then((res) => {
       refetch()
       console.log(res);
@@ -52,7 +53,7 @@ const AllUsers = () => {
     })
   };
 
-  if(isPending) {
+  if(isPending || users.length < 0) {
     return <Loader />
   }
 

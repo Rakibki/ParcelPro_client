@@ -58,8 +58,8 @@ const AuthProvaider = ({ children }) => {
     const disConnect = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoadding(false);
-
       const logginUser = user?.email || currentUser?.email;
+
       const LoginUser = {
         email: user?.email || currentUser?.email,
         name: user?.displayName || currentUser?.displayName,
@@ -67,7 +67,8 @@ const AuthProvaider = ({ children }) => {
         image: user?.photoURL || currentUser?.photoURL
       }
 
-      if (logginUser) {
+
+      if (currentUser?.photoURL && user) {
         createToken({ logginUser });
         createUserDB(LoginUser);
       } else {
@@ -80,7 +81,6 @@ const AuthProvaider = ({ children }) => {
     });
   }, [user]);
 
-  console.log(user);
 
   const userInfo = {
     user,

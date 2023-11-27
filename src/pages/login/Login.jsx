@@ -2,14 +2,15 @@ import React, { useContext } from "react";
 import loginimgae from "../../assets/images/login1.png";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../providers/authProvider/AuthProvider";
 
 const Login = () => {
   const {loginUser} = useContext(authContext)
+  const navigate = useNavigate()
+
   const handleLogin = (e) => {
     e.preventDefault();
-
     const email = e.target.email.value;
     const password = e.target.password.value;
 

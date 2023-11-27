@@ -46,7 +46,7 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         updaetUserProfile(name, image)
-          .then((res) => {
+          .then(async (res) => {
             const user = {
               email,
               name,
@@ -54,8 +54,10 @@ const Register = () => {
               image,
             };
             const logginUser = { logginUser: email };
-            createUserDB(user);
-            createToken(logginUser);
+            if (user) {
+              createUserDB(user);
+              createToken(logginUser);
+            }
           })
           .catch((e) => console.log(e.message));
       })
