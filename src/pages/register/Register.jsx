@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import styled from "@emotion/styled";
+import PrimayButton from "../../components/shared/button/PrimayButton";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -78,7 +79,7 @@ const Register = () => {
       >
         <Grid
           style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-          height={"600px"}
+          height={"630px"}
           bgcolor={"#fff"}
           padding={"20px"}
           width={"50%"}
@@ -87,9 +88,13 @@ const Register = () => {
             Create an account
           </Typography>
 
-          <form onSubmit={handleRegister} className="p-10 card-body">
+          <form
+            style={{ overflow: "hidden", padding:"30px" }}
+            onSubmit={handleRegister}
+          >
             <TextField
               id="outlined-basic"
+              sx={{ width: "100%", marginBottom: "10px" }}
               name="name"
               label="Full Name"
               variant="outlined"
@@ -98,12 +103,14 @@ const Register = () => {
               id="outlined-basic"
               name="email"
               label="Email Address"
+              sx={{ width: "100%", marginBottom: "10px" }}
               variant="outlined"
             />
             <TextField
               id="outlined-basic"
               name="password"
               label="Passsword"
+              sx={{ width: "100%", marginBottom: "10px" }}
               variant="outlined"
             />
 
@@ -117,6 +124,7 @@ const Register = () => {
                   id="demo-simple-select"
                   label="Select Role"
                   onChange={handleChange}
+                  sx={{marginBottom: "10px"}}
                 >
                   <MenuItem value={"Delivery_Men"}>Delivery Men</MenuItem>
                   <MenuItem value={"user"}>User</MenuItem>
@@ -135,20 +143,18 @@ const Register = () => {
               </Button>
             </Grid>
 
-            <Grid container justifyContent={"center"}>
+            <Grid overflow={"hidden"} container justifyContent={"center"}>
               {/* <Button color="red" bgcolor={"#2ad4bc"} >  className="px-4 py-3 rounded-lg text-white font-semibold bg-[]"
                 Register
               </Button> */}
-              <Button type="submit" variant="contained" color="success">
-                Register
-              </Button>
+              <PrimayButton size={"100%"}>Register</PrimayButton>
             </Grid>
           </form>
 
           <SocialLogin />
           <Grid container justifyContent={"center"}>
             <Typography variant="p">
-              Already a member?{" "}
+              Already have an account?{" "}
               <Link
                 className="hover:underline hover:text-[#2ad4bc]"
                 to={"/login"}

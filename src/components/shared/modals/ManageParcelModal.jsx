@@ -39,7 +39,6 @@ const ManageParcelModal = ({handleManageButton, handleSelectDelivaryMen, handleO
 
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         keepMounted
         open={open}

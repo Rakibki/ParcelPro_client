@@ -13,11 +13,11 @@ export const createToken = (user) => {
     axiosSecure.post("/jwt", user)
 }
 
-export const all_users = () => {
+export const all_users = (currentPage, itemperPage) => {
     const { isPending, error, data:users, refetch } = useQuery({
-        queryKey: ['all_users'],
+        queryKey: ['all_users', currentPage],
         queryFn: async () => {
-            const res = axiosSecure.get("/users")
+            const res = axiosSecure.get(`/users?page=${currentPage}&size=${itemperPage}`)
             return res
         }
       })
@@ -39,4 +39,9 @@ export const getAllDeliveryMen = () => {
 export const getUser = async (email) => {
     const res = await axiosSecure.get(`/user/${email}`)
     return res.data
+}
+
+export const userLength = async () => {
+    const res = await axiosSecure.get(`/userLength`)
+    return res?.data?.result
 }

@@ -1,36 +1,63 @@
 import React, { useContext } from "react";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { authContext } from "../../providers/authProvider/AuthProvider";
+import { Divider, Grid } from "@mui/material";
 
 const SocialLogin = () => {
   const { loginWithGoogle } = useContext(authContext);
 
   const handleGoogleLogin = () => {
     loginWithGoogle()
-    .then((res) => console.log(res))
-    .catch((e) => console.log(e))
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
   };
 
   return (
-    <div>
-      <div className="divider font-Inter font-medium">Or sign up with</div>
-      <div className="flex justify-center items-center">
-        <div className="flex items-center gap-3">
-          <div className="p-3 text-[#444] cursor-pointer hover:text-[#2ad4bc] transition hover:border-[#2ad4bc] border-[#444] rounded-full border-2">
-            <FaFacebookF />
-          </div>
-          <div className="p-3 text-[#444] cursor-pointer hover:text-[#2ad4bc] transition hover:border-[#2ad4bc] border-[#444] rounded-full border-2">
-            <FaGithub />
-          </div>
-          <div
-            onClick={handleGoogleLogin}
-            className="p-3 text-[#444] cursor-pointer hover:text-[#2ad4bc] transition hover:border-[#2ad4bc] border-[#444] rounded-full border-2"
-          >
-            <FaGoogle />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Grid container marginTop={"40px"} alignItems={"center"} justifyContent={"center"}>
+      <Grid width={"auto"} container alignContent={"center"} spacing={6}>
+        <Grid
+          padding={"10px"}
+          sx={{
+            cursor: "pointer",
+            border: "2px solid #444",
+            marginRight: "6px",
+            transform: "1s",
+            borderRadius: "100%",
+          }}
+          color={"#444"}
+        >
+          <FaFacebookF />
+        </Grid>
+        <Grid
+          padding={"10px"}
+          sx={{
+            cursor: "pointer",
+            border: "2px solid #444",
+            marginRight: "6px",
+            transform: "1s",
+            borderRadius: "100%",
+          }}
+          color={"#444"}
+        >
+          <FaGithub />
+        </Grid>
+
+        <Grid
+          onClick={handleGoogleLogin}
+          padding={"10px"}
+          sx={{
+            cursor: "pointer",
+            border: "2px solid #444",
+            marginRight: "6px",
+            transform: "1s",
+            borderRadius: "100%",
+          }}
+          color={"#444"}
+        >
+          <FaGoogle />
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 

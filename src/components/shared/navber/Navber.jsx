@@ -143,7 +143,7 @@ const Navber = () => {
                 {user?.email ? (
                   <div onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
-                      sx={{ border: "2px solid #f0b913" }}
+                      sx={{ border: "1px solid #f44647" }}
                       alt="Remy Sharp"
                       src={user?.photoURL}
                     />
@@ -171,8 +171,9 @@ const Navber = () => {
                 onClose={handleCloseUserMenu}
               >
                 {user?.email ? (
-                  <Grid padding={2}>
+                  <Grid height={"100%"} bgcolor={"#2b2c34"} padding={2}>
                     <Typography
+                      color="#f44647"
                       textAlign={"center"}
                       mb-2
                       sx={{ fontSize: "17px", fontWeight: "500" }}
@@ -182,14 +183,54 @@ const Navber = () => {
                       {user?.displayName}
                     </Typography>
 
-                    <Link to={"/dashboard"}>
-                      <MenuItem>
-                        <Typography textAlign="center">Dashboard</Typography>
-                      </MenuItem>
-                    </Link>
+                    {role == "admin" && (
+                      <Link to={"/dashboard/statistics"}>
+                        <Typography
+                          marginY={"10px"}
+                          fontSize={"18px"}
+                          variant="h6"
+                          color="#f44647"
+                          textAlign="center"
+                        >
+                          Dashboard
+                        </Typography>
+                      </Link>
+                    )}
+
+                    {role == "user" && (
+                      <Link to={"/dashboard/bookParcel"}>
+                        <Typography
+                          marginY={"10px"}
+                          fontSize={"18px"}
+                          variant="h6"
+                          color="#f44647"
+                          textAlign="center"
+                        >
+                          Dashboard
+                        </Typography>
+                      </Link>
+                    )}
+                    {role == "Delivery_Men" && (
+                      <Link to={"/dashboard/MyDeliveryList"}>
+                        <Typography
+                          marginY={"10px"}
+                          fontSize={"18px"}
+                          variant="h6"
+                          color="#f44647"
+                          textAlign="center"
+                        >
+                          Dashboard
+                        </Typography>
+                      </Link>
+                    )}
 
                     <MenuItem mb-2 onClick={handleLogout}>
-                      <Typography textAlign="center">Logout</Typography>
+                      <PrimayButton
+                        style={{ width: "100%" }}
+                        textAlign="center"
+                      >
+                        Logout
+                      </PrimayButton>
                     </MenuItem>
                   </Grid>
                 ) : (

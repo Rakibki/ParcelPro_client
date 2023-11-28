@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import AdminMenu from "../../pages/dashboard/adminDashboard/adminMenu/AdminMenu";
 import DeliveryMenMenu from "../../pages/dashboard/DeliveryMenDashboard/deliveryMenMenu/deliveryMenMenu";
 import UserMenu from "../../pages/dashboard/userDashboard/userMenu/UserMenu";
@@ -14,6 +14,7 @@ import { authContext } from "../../providers/authProvider/AuthProvider";
 const DashboardLayout = () => {
   const [role, isPending] = useRole();
   const { logOut } = useContext(authContext);
+  const navigate = useNavigate();
 
   if (isPending) {
     return <Loader />;
@@ -21,14 +22,14 @@ const DashboardLayout = () => {
 
   return (
     <Grid>
-      <Grid container spacing={2}>
+      <Grid container>
         <Grid
           color={"#fff"}
           style={{
             padding: "10px",
           }}
           height={"100vh"}
-          bgcolor={"#111c43"}
+          bgcolor={"#111111"}
           width={100}
           xs={3}
           item
@@ -36,16 +37,18 @@ const DashboardLayout = () => {
         >
           <Grid>
             <img style={{ margin: "10px 20px" }} width={"70%"} src={logo} />
-            {/* {role === "admin" ? <AdminMenu /> : ""}
+            {role === "admin" ? <AdminMenu /> : ""}
             {role === "user" ? <UserMenu /> : ""}
-            {role === "Delivery_Men" ? <DeliveryMenMenu /> : ""} */}
-            <AdminMenu />
-            <UserMenu />
-            <DeliveryMenMenu />
+            {role === "Delivery_Men" ? <DeliveryMenMenu /> : ""}
           </Grid>
           <Grid fontSize={18} paddingX={4} bottom={30} position={"absolute"}>
             <Grid marginBottom={1}>
-              <NavLink onClick={logOut}>
+              <NavLink
+                onClick={() => {
+                  logOut();
+                  navigate("/");
+                }}
+              >
                 <LogoutIcon />
                 Logout
               </NavLink>

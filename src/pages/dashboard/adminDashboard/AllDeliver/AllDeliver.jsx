@@ -36,12 +36,12 @@ const AllDeliver = () => {
     DeliveryMen?.data?.length > 0 && (
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }}>
-          <TableHead backgroundColor={"#5c8134"}>
+          <TableHead sx={{ bgcolor: "#f44647" }}>
             <TableRow>
               <StyledTableCell>Name</StyledTableCell>
               <StyledTableCell align="right">Email</StyledTableCell>
               <StyledTableCell align="right">Role</StyledTableCell>
-              <StyledTableCell align="right">Action</StyledTableCell>
+              <StyledTableCell align="right">Average review</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>

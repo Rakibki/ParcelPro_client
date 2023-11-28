@@ -16,8 +16,3 @@ import {useQuery} from "@tanstack/react-query"
 //     }
 
 
-export const myDelivery = async (id) => {
-    const  axiosSecure = useAxiosSecure();
-    const res = await axiosSecure.get(`/myDelivery/${id}`)
-    return res.data
-}

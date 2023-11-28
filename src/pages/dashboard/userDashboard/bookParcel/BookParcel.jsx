@@ -3,12 +3,13 @@ import { authContext } from "../../../../providers/authProvider/AuthProvider";
 import { createBooking } from "../../../../api/booking";
 import TextField from "@mui/material/TextField";
 import { Button, Grid } from "@mui/material";
+import SectionTitle from "../../../../components/shared/sectionTitle/SectionTitle";
 
 const BookParcel = () => {
   const { user } = useContext(authContext);
   const [weight, setWeight] = useState(0);
   const [totalPrice, setTotalPrice] = useState(null);
-
+  
   useEffect(() => {
     if (weight == 1) {
       setTotalPrice(50);
@@ -17,7 +18,7 @@ const BookParcel = () => {
     } else if (weight > 2) {
       setTotalPrice(150);
     }
-  }, [setWeight, weight, setTotalPrice]);
+  }, [weight]);
 
   const handleBookSubmit = async (e) => {
     e.preventDefault();
@@ -35,15 +36,21 @@ const BookParcel = () => {
       DeliveryAddresslongitude: e?.target?.DeliveryAddresslongitude?.value,
       price: totalPrice,
       status: "pending",
+      bookingDate: new Date().toDateString()
     };
     const res = await createBooking(bookInfo);
   };
 
-  console.log(totalPrice);
 
   return (
-    <div>
-      <form style={{ marginTop: "50px" }} onSubmit={handleBookSubmit}>
+    <Grid height={"100%"} style={{ borderLeft: "1px solid red" }}>
+      <Grid marginTop={"20px"}>
+        <SectionTitle color="black" title={"Book a Parcel"} />
+      </Grid>
+      <form
+        style={{ marginTop: "50px", padding: "20px" }}
+        onSubmit={handleBookSubmit}
+      >
         <Grid container spacing={1}>
           <Grid width={"100%"} item xs={6}>
             <TextField
@@ -67,7 +74,7 @@ const BookParcel = () => {
           </Grid>
         </Grid>
 
-        <Grid marginTop={.5} spacing={1} container>
+        <Grid marginTop={0.5} spacing={1} container>
           <Grid item xs={6}>
             <TextField
               name="phoneNumber"
@@ -88,7 +95,7 @@ const BookParcel = () => {
           </Grid>
         </Grid>
 
-        <Grid marginTop={.5} spacing={1} container>
+        <Grid marginTop={0.5} spacing={1} container>
           <Grid item xs={6}>
             <TextField
               onChange={(e) => setWeight(e.target.value)}
@@ -110,7 +117,7 @@ const BookParcel = () => {
           </Grid>
         </Grid>
 
-        <Grid marginTop={.5} spacing={1} container>
+        <Grid marginTop={0.5} spacing={1} container>
           <Grid item xs={6}>
             <TextField
               name="ReceiverNumber"
@@ -131,11 +138,12 @@ const BookParcel = () => {
           </Grid>
         </Grid>
 
-        <Grid marginTop={.5} container spacing={1}>
+        <Grid marginTop={0.5} container spacing={1}>
           <Grid item xs={6}>
             <TextField
               name="RequestedDate"
               id="outlined-basic"
+              type="date"
               label="Requested Delivery Date"
               variant="outlined"
               sx={{ width: "100%" }}
@@ -152,7 +160,7 @@ const BookParcel = () => {
           </Grid>
         </Grid>
 
-        <Grid marginTop={.5} container spacing={1}>
+        <Grid marginTop={0.5} container spacing={1}>
           <Grid item xs={6}>
             <TextField
               name="DeliveryAddresslongitude"
@@ -172,11 +180,15 @@ const BookParcel = () => {
             />
           </Grid>
         </Grid>
-        <Button sx={{marginTop: "10px", width: "100%"}} variant="contained" type="submit">
+        <Button
+          sx={{ marginTop: "10px", width: "100%" }}
+          variant="contained"
+          type="submit"
+        >
           Submit
         </Button>
       </form>
-    </div>
+    </Grid>
   );
 };
 

@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Grid marginX={"auto"} maxWidth={"1200px"}>
+    <Grid marginX={"auto"} maxWidth={"1300px"}>
       <QueryClientProvider client={queryClient}>
         <AuthProvaider>
           <RouterProvider router={router} />

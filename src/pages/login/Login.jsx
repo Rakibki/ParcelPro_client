@@ -4,19 +4,20 @@ import { Button, Grid, TextField, Typography } from "@mui/material";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../providers/authProvider/AuthProvider";
+import PrimayButton from "../../components/shared/button/PrimayButton";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import auth from "../../firebase/firebase.config";
 
 const Login = () => {
-  const {loginUser} = useContext(authContext)
-  const navigate = useNavigate()
+  const { singUser } = useContext(authContext);
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-
-
-    loginUser(email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
         console.log("login User");
         navigate(location.state ? location.state : "/");
@@ -43,37 +44,40 @@ const Login = () => {
             Login Now
           </Typography>
 
-          <form onSubmit={handleLogin} className="p-10 card-body">
+          <form
+            style={{ overflow: "hidden", padding: "20px" }}
+            onSubmit={handleLogin}
+          >
             <TextField
               id="outlined-basic"
               name="email"
               label="Email Address"
               variant="outlined"
+              sx={{ width: "100%", marginBottom: "10px" }}
             />
             <TextField
               id="outlined-basic"
+              sx={{ width: "100%", marginBottom: "10px" }}
               name="password"
               label="Passsword"
               variant="outlined"
             />
 
-            <Grid container justifyContent={"center"}>
-              <Button type="submit" variant="contained" color="success">
-                Login
-              </Button>
+            <Grid overflow={"hidden"} container justifyContent={"center"}>
+              <PrimayButton size="100%">Login</PrimayButton>
             </Grid>
           </form>
 
           <SocialLogin />
           <Grid container justifyContent={"center"}>
             <Typography variant="p">
-              Already a member?{" "}
+              Have an account?{" "}
               <Link
                 className="hover:underline hover:text-[#2ad4bc]"
-                to={"/login"}
+                to={"/register"}
               >
                 {" "}
-                Login here{" "}
+                Sign In{" "}
               </Link>
             </Typography>
           </Grid>

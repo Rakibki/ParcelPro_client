@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { myDelivery } from "../../../../api/delivery_men";
 import { authContext } from "../../../../providers/authProvider/AuthProvider";
 import { getUser } from "../../../../api/auth";
 
@@ -13,27 +12,46 @@ import Paper from "@mui/material/Paper";
 import getIdbyEmail from "../../../../api/getIdbyEmail";
 import { Button } from "@mui/material";
 import { updateParcelStatus } from "../../../../api/booking";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Loader from "../../../../components/loader/Loader";
 
 const MyDeliveryList = () => {
-  const [myList, setMyList] = useState([]);
+  const [id, setId] = useState(null);
+  const axiosSecure = useAxiosSecure();
 
   const getDate = async () => {
     const id = await getIdbyEmail();
-    const res = await myDelivery(id);
-    return res;
+    setId(id);
   };
+  getDate();
 
-  useEffect(() => {
-    getDate();
-  }, []);
+  const {
+    isPending,
+    refetch,
+    error,
+    data: myList,
+  } = useQuery({
+    queryKey: ["getMyDevliver"],
+    enabled: !!id,
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/myDelivery/${id}`);
+      return res.data;
+    },
+  });
 
-  const handleCancel = async (id) => {
+  if (isPending) {
+    return <Loader />;
+  }
+
+  const handleCancel = async () => {
     const res = await updateParcelStatus(id, "Cancelled");
-    console.log(res);
+    refetch();
   };
 
   const handleDeliver = async (id) => {
-    alert(id);
+    const res = await axiosSecure.put(`/handleDeliverd${id}`);
+    console.log(res);
   };
 
   return (
@@ -68,10 +86,8 @@ const MyDeliveryList = () => {
                 <TableCell align="right">{row.ReceiverNumber}</TableCell>
                 <TableCell align="right">{row.DeliveryAddress}</TableCell>
                 <TableCell align="right">
-                  <Button size="small" variant="contained">
-                    View Location
-                  </Button>
                   <Button
+                    sx={{ marginBottom: "5px" }}
                     onClick={() => handleCancel(row._id)}
                     size="small"
                     variant="contained"

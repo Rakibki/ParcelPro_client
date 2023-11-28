@@ -8,7 +8,7 @@ const Delivery_Men_route = ({children}) => {
     const [role, isPending] = useRole();
     const {user, loadding} = useContext(authContext)
 
-    if(loadding || isPending || user) {
+    if(loadding || isPending) {
         return <Loader />
     }
 

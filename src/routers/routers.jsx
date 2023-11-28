@@ -48,44 +48,92 @@ const router = createBrowserRouter([
     children: [
       {
         path: "bookParcel",
-        element: <BookParcel />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <BookParcel />{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "myParcel",
-        element: <MyParcels />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyParcels />{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "AllParcels",
-        element: <AllParcels />,
+        element: (
+          <AdminRoute>
+            {" "}
+            <AllParcels />{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "users",
-        element: <AllUsers />,
+        element: (
+          <AdminRoute>
+            {" "}
+            <AllUsers />{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "deliveryMen",
-        element: <AllDeliver />,
+        element: (
+          <AdminRoute>
+            <AllDeliver />
+          </AdminRoute>
+        ),
       },
       {
         path: "statistics",
-        element: <Statistics />,
+        element: (
+          <AdminRoute>
+            <Statistics />
+          </AdminRoute>
+        ),
       },
       {
         path: "MyDeliveryList",
-        element: <MyDeliveryList />,
+        element: (
+          <Delivery_Men_route>
+            <MyDeliveryList />
+          </Delivery_Men_route>
+        ),
       },
       {
         path: "MyReviews",
-        element: <MyReviews />,
+        element: (
+          <Delivery_Men_route>
+            {" "}
+            <MyReviews />{" "}
+          </Delivery_Men_route>
+        ),
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "updateParcel/:id",
-        element: <UpdateParcel />,
-        loader: ({params}) => fetch(`http://localhost:4000/getSingleParcel/${params.id}`)
+        element: (
+          <PrivateRoute>
+            {" "}
+            <UpdateParcel />{" "}
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:4000/getSingleParcel/${params.id}`),
       },
     ],
   },

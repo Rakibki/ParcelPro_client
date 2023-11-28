@@ -6,9 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-// import PeopleAltIcon from '@mui/icons-material/PeopleAltIcon';
-// import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafetyIcon';
-// import ThumbUpIcon from '@mui/icons-material/ThumbUpIcon';
+
 
 const Features = () => {
   const [data, setData] = useState([]);
@@ -17,21 +15,30 @@ const Features = () => {
     fetch("/feture.json")
       .then((res) => res.json())
       .then((data) => setData(data));
-  });
+  }, []);
+
 
   return (
-    <Grid marginTop={"20px"} container spacing={1}>
+    <Grid container>
       {data?.map(({ title, desc, Icon }) => {
         return (
-          <Grid xs={4} item>
+          <Grid
+            color={"#fff"}
+            padding={"20px"}
+            border={"2px solid #f44647"}
+            bgcolor={"#111111"}
+            xs={4}
+            item
+          >
             <Icon />
-            <Typography variant="p">{title}</Typography>
+            <Typography marginBottom={"10px"} fontWeight={"600"} variant="h5">{title}</Typography>
             <Typography variant="p">{desc}</Typography>
           </Grid>
         );
       })}
     </Grid>
   );
+  return <p>hello</p>;
 };
 
 export default Features;
