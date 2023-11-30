@@ -26,7 +26,7 @@ const AllDeliver = () => {
     "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
+
     "&:last-child td, &:last-child th": {
       border: 0,
     },
@@ -36,7 +36,7 @@ const AllDeliver = () => {
     DeliveryMen?.data?.length > 0 && (
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }}>
-          <TableHead sx={{ bgcolor: "#f44647" }}>
+          <TableHead>
             <TableRow>
               <StyledTableCell>Name</StyledTableCell>
               <StyledTableCell align="right">Email</StyledTableCell>
@@ -52,8 +52,7 @@ const AllDeliver = () => {
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.email}</StyledTableCell>
                 <StyledTableCell align="right">{row.role}</StyledTableCell>
-                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                <StyledTableCell align="right">{"4"}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

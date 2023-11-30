@@ -13,8 +13,8 @@ export const deleteBooking = async (id) => {
 }
 
 
-export const updateStatus = async (id, delivaryMenId) => {
-   const res = await axiosSecure.put(`/booking/${id}`, {delivaryMenId})
+export const updateStatus = async (id, delivaryMenId, DeliveryDate) => {
+   const res = await axiosSecure.put(`/booking/${id}`, {delivaryMenId, DeliveryDate})
    return res
 } 
 

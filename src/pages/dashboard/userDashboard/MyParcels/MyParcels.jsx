@@ -44,8 +44,6 @@ const MyParcels = () => {
     setDeviveryManId(id);
   };
 
-  console.log(myParcel);
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -57,8 +55,10 @@ const MyParcels = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        refetch();
         deleteBooking(id).then(async (res) => {
           if (res) {
+            refetch()
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
           }
         });
@@ -68,9 +68,6 @@ const MyParcels = () => {
 
   return (
     <>
-    <Grid marginBottom={"10px"} marginTop={"20px"}>
-      <SectionTitle color="black" title={"My Parcels"} />
-    </Grid>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="caption table">
           <TableHead sx={{ bgcolor: "#f44647" }}>
@@ -129,50 +126,87 @@ const MyParcels = () => {
                 <TableCell align="right">{row.status}</TableCell>
                 <TableCell align="right">{row.delivaryMenId}</TableCell>
                 <TableCell align="right">
-                  {row?.status === "delivered" ? (
+                  {row?.status === "deliverd" ? (
                     <Grid>
-                      <Button
+                      <button
                         onClick={() => handleClick(row?.delivaryMenId)}
-                        size="small"
-                        variant="outlined"
+                        style={{
+                          marginTop: "10px",
+                          fontWeight: "600",
+                          padding: `6px 15px`,
+                          backgroundColor: "#f44647",
+                          color: "#fff",
+                          borderRadius: "5px",
+                        }}
                       >
                         Review
-                      </Button>{" "}
+                      </button>
                     </Grid>
                   ) : (
                     <Grid>
                       {row.status === "pending" ? (
-                        <Grid container>
+                        <Grid spacing={0.5} container>
+                          <Link to={`/dashboard/updateParcel/${row._id}`}>
+                            <button
+                              style={{
+                                cursor: "pointer",
+                                marginTop: "10px",
+                                fontWeight: "600",
+                                padding: `4px 10px`,
+                                backgroundColor: "#f44647",
+                                color: "#fff",
+                                borderRadius: "5px",
+                              }}
+                            >
+                              Update
+                            </button>
+                          </Link>
                           <Grid xs={6} item>
-                            <Link to={`/dashboard/updateParcel/${row._id}`}>
-                              {" "}
-                              <Button size="small" variant="outlined">
-                                Update
-                              </Button>{" "}
-                            </Link>
-                          </Grid>
-                          <Grid xs={6} item>
-                            <Button
+                            <button
                               onClick={() => handleDelete(row._id)}
-                              size="small"
-                              variant="outlined"
+                              style={{
+                                marginTop: "10px",
+                                fontWeight: "600",
+                                padding: `4px 10px`,
+                                backgroundColor: "#f44647",
+                                color: "#fff",
+                                borderRadius: "5px",
+                              }}
                             >
                               Dalete
-                            </Button>{" "}
+                            </button>
                           </Grid>
                         </Grid>
                       ) : (
-                        <Grid container>
-                          <Grid item xs={6}>
-                            <Button size="small" disabled variant="outlined">
-                              Update
-                            </Button>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <Button size="small" disabled variant="outlined">
-                              Dalete
-                            </Button>
-                          </Grid>
+                        <Grid spacing={0.5} container>
+                          <button
+                            disabled
+                            style={{
+                              marginTop: "10px",
+                              fontWeight: "600",
+                              opacity: "40%",
+                              padding: `4px 10px`,
+                              backgroundColor: "#f44647",
+                              color: "#fff",
+                              borderRadius: "5px",
+                            }}
+                          >
+                            Update
+                          </button>
+                          <button
+                            disabled
+                            style={{
+                              marginTop: "10px",
+                              fontWeight: "600",
+                              opacity: "40%",
+                              padding: `4px 10px`,
+                              backgroundColor: "#f44647",
+                              color: "#fff",
+                              borderRadius: "5px",
+                            }}
+                          >
+                            Dalete
+                          </button>
                         </Grid>
                       )}
                     </Grid>

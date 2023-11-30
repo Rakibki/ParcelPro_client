@@ -15,6 +15,7 @@ import { updateParcelStatus } from "../../../../api/booking";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Loader from "../../../../components/loader/Loader";
+import Swal from "sweetalert2";
 
 const MyDeliveryList = () => {
   const [id, setId] = useState(null);
@@ -44,30 +45,65 @@ const MyDeliveryList = () => {
     return <Loader />;
   }
 
-  const handleCancel = async () => {
-    const res = await updateParcelStatus(id, "Cancelled");
-    refetch();
+  const handleCancel = async (bookingId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        updateParcelStatus(bookingId, "Cancelled")
+        .then((res) => {
+          console.log(res);
+          refetch();
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        });
+      }
+    });
   };
 
-  const handleDeliver = async (id) => {
-    const res = await axiosSecure.put(`/handleDeliverd${id}`);
-    console.log(res);
+  const handleDeliver = async (Bookid) => {
+    const res = await axiosSecure.put(
+      `/handleDeliverd?id=${Bookid}&deliveryManId=${id}`
+    );
+    if (res) {
+      Swal.fire("Successfully delivered");
+      refetch();
+    }
   };
 
   return (
     <div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
+          <TableHead sx={{ backgroundColor: "#f44647" }}>
             <TableRow>
-              <TableCell>Booked User’s Name</TableCell>
-              <TableCell align="right">Receivers Name</TableCell>
-              <TableCell align="right">Booked User’s Phone</TableCell>
-              <TableCell align="right">Requested Delivery Date</TableCell>
-              <TableCell align="right">Approximate Delivery Date</TableCell>
-              <TableCell align="right">Recievers phone number</TableCell>
-              <TableCell align="right">Recievers Address</TableCell>
-              <TableCell align="right">Action</TableCell>
+              <TableCell sx={{ color: "#fff" }}>Name</TableCell>
+              <TableCell sx={{ color: "#fff" }} align="right">
+                Receivers Name
+              </TableCell>
+              <TableCell sx={{ color: "#fff" }} align="right">
+                Booked User’s Phone
+              </TableCell>
+              <TableCell sx={{ color: "#fff" }} align="right">
+                Requested Delivery Date
+              </TableCell>
+              <TableCell sx={{ color: "#fff" }} align="right">
+                Delivery Date
+              </TableCell>
+              <TableCell sx={{ color: "#fff" }} align="right">
+                Recievers phone number
+              </TableCell>
+              <TableCell sx={{ color: "#fff" }} align="right">
+                Recievers Address
+              </TableCell>
+              <TableCell sx={{ color: "#fff" }} align="right">
+                Action
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -82,25 +118,45 @@ const MyDeliveryList = () => {
                 <TableCell align="right">{row.ReceiverName}</TableCell>
                 <TableCell align="right">{row.phoneNumber}</TableCell>
                 <TableCell align="right">{row.RequestedDate}</TableCell>
-                <TableCell align="right"></TableCell>
+                <TableCell align="right">{row?.DeliveryDate}</TableCell>
                 <TableCell align="right">{row.ReceiverNumber}</TableCell>
                 <TableCell align="right">{row.DeliveryAddress}</TableCell>
                 <TableCell align="right">
-                  <Button
-                    sx={{ marginBottom: "5px" }}
+                  <button
                     onClick={() => handleCancel(row._id)}
-                    size="small"
-                    variant="contained"
+                    style={{
+                      marginTop: "10px",
+                      fontWeight: "600",
+                      padding: `4px 10px`,
+                      backgroundColor: "#f44647",
+                      color: "#fff",
+                      borderRadius: "5px",
+                    }}
+                  >Cancel</button>
+                  
+                  <button
+                    onClick={() => handleDeliver(row._id)}
+                    disabled={row.status === "deliverd"}
+                    style={{
+                      opacity: `${row.status}` === "deliverd" ? "40%" : "100%",
+                      marginTop: "10px",
+                      fontWeight: "600",
+                      padding: `4px 10px`,
+                      backgroundColor: "#f44647",
+                      color: "#fff",
+                      borderRadius: "5px",
+                    }}
                   >
-                    Cancel
-                  </Button>
-                  <Button
+                    Deliver
+                  </button>
+                  {/* <Button
+                    disabled={row.status === "deliverd"}
                     onClick={() => handleDeliver(row._id)}
                     size="small"
                     variant="contained"
                   >
                     Deliver
-                  </Button>
+                  </Button> */}
                 </TableCell>
               </TableRow>
             ))}

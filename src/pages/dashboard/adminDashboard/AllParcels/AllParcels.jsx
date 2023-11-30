@@ -26,10 +26,10 @@ const AllParcels = () => {
     setmanageItem(id);
   };
 
-  const handleManageButton = async () => {
-    const res = await updateStatus(maneItem, delivaryMenId);
-    console.log(res);
+  const handleManageButton = async (DeliveryDate) => {
+    const res = await updateStatus(maneItem, delivaryMenId, DeliveryDate);
     refetch();
+    handleClose()
   };
 
   const handleSelectDelivaryMen = (delivaryId) => {
@@ -61,7 +61,7 @@ const AllParcels = () => {
                 sx={{ color: "#fff", fontWeight: "600" }}
                 align="right"
               >
-                Requested Delivery Date
+                Requested Date
               </TableCell>
               <TableCell
                 sx={{ color: "#fff", fontWeight: "600" }}

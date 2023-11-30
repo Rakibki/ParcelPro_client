@@ -6,9 +6,28 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../components/loader/Loader";
 
 const TopDeveveryMan = () => {
-  const [AllDeliveryMen] = getAllDeliveryMen();
+  const axiosSecure = useAxiosSecure();
+
+  const {
+    isPending,
+    error,
+    data: topDeliverMan,
+  } = useQuery({
+    queryKey: ["topDeliverMan"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("topFiveFeliveryMan");
+      return res;
+    },
+  });
+
+  if (isPending) {
+    return <Loader />;
+  }
 
   return (
     <Grid minHeight={"100vh"} bgcolor={"#202020"}>
@@ -24,39 +43,41 @@ const TopDeveveryMan = () => {
           border: "2px solid #272727",
         }}
       >
-        <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-          {AllDeliveryMen?.data.map((item) => {
-            return (
-              <SwiperSlide style={{ padding: "50px" }}>
-                <Grid sx={{ width: "24%", marginX: "auto" }}>
-                  <img
-                    style={{ borderRadius: "100%" }}
-                    src={item.image}
-                    alt=""
-                  />
-                </Grid>
-                <Typography
-                  variant="h4"
-                  marginTop={"10px"}
-                  textAlign={"center"}
-                  color={"#fff"}
-                  component="h2"
-                >
-                  {item.name}
-                </Typography>
+        {topDeliverMan?.data?.length > 0 && (
+          <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+            {topDeliverMan?.data.map((item) => {
+              return (
+                <SwiperSlide style={{ padding: "50px" }}>
+                  <Grid sx={{ width: "24%", marginX: "auto" }}>
+                    <img
+                      style={{ borderRadius: "100%" }}
+                      src={item.image}
+                      alt=""
+                    />
+                  </Grid>
+                  <Typography
+                    variant="h4"
+                    marginTop={"10px"}
+                    textAlign={"center"}
+                    color={"#fff"}
+                    component="h2"
+                  >
+                    {item.name}
+                  </Typography>
 
-                <Grid marginTop={"20px"} container justifyContent={"center"}>
-                  <Rating
-                    sx={{ color: "#f44647" }}
-                    name="read-only"
-                    value={4}
-                    readOnly
-                  />
-                </Grid>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                  <Grid marginTop={"20px"} container justifyContent={"center"}>
+                    <Rating
+                      sx={{ color: "#f44647" }}
+                      name="read-only"
+                      value={4}
+                      readOnly
+                    />
+                  </Grid>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        )}
       </Grid>
     </Grid>
   );

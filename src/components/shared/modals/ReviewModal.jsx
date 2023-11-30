@@ -7,6 +7,7 @@ import { authContext } from "../../../providers/authProvider/AuthProvider";
 import { Rating, TextField } from "@mui/material";
 import PrimayButton from "../button/PrimayButton";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const ReviewModal = ({ deviveryManId, open, handleClose }) => {
   const { user } = useContext(authContext);
@@ -20,7 +21,7 @@ const ReviewModal = ({ deviveryManId, open, handleClose }) => {
     transform: "translate(-50%, -50%)",
     width: 400,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    border: "2px solid #f44647",
     boxShadow: 24,
     p: 4,
   };
@@ -37,7 +38,10 @@ const ReviewModal = ({ deviveryManId, open, handleClose }) => {
     };
 
     const res = await axiosSecure.post("/review", review);
-    console.log(res);
+    if (res) {
+      Swal.fire("Thanks for sharing your valuable opinion");
+      handleClose();
+    }
   };
 
   return (
@@ -85,6 +89,7 @@ const ReviewModal = ({ deviveryManId, open, handleClose }) => {
             />
 
             <Rating
+              sx={{ color: "#f44647", marginBottom: "10px" }}
               onChange={(e, rattingValue) => setValue(rattingValue)}
               name="half-rating"
               defaultValue={2.5}

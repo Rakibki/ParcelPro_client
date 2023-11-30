@@ -13,6 +13,7 @@ import { Button, Grid } from "@mui/material";
 import makeAdmin from "../../../../api/makeAdmin";
 import Loader from "../../../../components/loader/Loader";
 import makeDeliveryMan from "../../../../api/makeDeliveryMan";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -40,16 +41,16 @@ const AllUsers = () => {
   }));
 
   const handleMakeDeliveryMan = (id) => {
-    makeDeliveryMan(id);
-    alert(id).then((res) => {
+    makeDeliveryMan(id)
+    .then((res) => {
       refetch();
-      console.log(res);
+      Swal.fire("Successfully created delivery man.");
     });
   };
   const handleMakeAdmin = async (id) => {
     makeAdmin(id).then((res) => {
       refetch();
-      console.log(res);
+      Swal.fire("Administered successfully");
     });
   };
 

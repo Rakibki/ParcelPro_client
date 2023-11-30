@@ -4,12 +4,15 @@ import { createBooking } from "../../../../api/booking";
 import TextField from "@mui/material/TextField";
 import { Button, Grid } from "@mui/material";
 import SectionTitle from "../../../../components/shared/sectionTitle/SectionTitle";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const BookParcel = () => {
   const { user } = useContext(authContext);
   const [weight, setWeight] = useState(0);
   const [totalPrice, setTotalPrice] = useState(null);
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (weight == 1) {
       setTotalPrice(50);
@@ -36,24 +39,32 @@ const BookParcel = () => {
       DeliveryAddresslongitude: e?.target?.DeliveryAddresslongitude?.value,
       price: totalPrice,
       status: "pending",
-      bookingDate: new Date().toDateString()
+      bookingDate: new Date().toDateString(),
     };
     const res = await createBooking(bookInfo);
+    if (res) {
+      Swal.fire("Parcel has been successfully booked");
+      navigate("/dashboard/myParcel");
+    }
   };
 
-
   return (
-    <Grid height={"100%"} style={{ borderLeft: "1px solid red" }}>
-      <Grid marginTop={"20px"}>
-        <SectionTitle color="black" title={"Book a Parcel"} />
+    <Grid
+      bgcolor={"#fff"}
+      height={"100%"}
+      style={{ borderLeft: "1px solid red" }}
+    >
+      <Grid paddingTop={"20px"}>
+        <SectionTitle color="black" title={"book a Parcel"} />
       </Grid>
       <form
-        style={{ marginTop: "50px", padding: "20px" }}
+        style={{ paddingTop: "50px", padding: "20px" }}
         onSubmit={handleBookSubmit}
       >
         <Grid container spacing={1}>
           <Grid width={"100%"} item xs={6}>
             <TextField
+              required
               defaultValue={user?.displayName}
               disabled
               id="outlined-basic"
@@ -70,6 +81,7 @@ const BookParcel = () => {
               label="Email"
               variant="outlined"
               sx={{ width: "100%" }}
+              required
             />
           </Grid>
         </Grid>
@@ -81,6 +93,7 @@ const BookParcel = () => {
               id="outlined-basic"
               label="phone number"
               variant="outlined"
+              required
               sx={{ width: "100%" }}
             />
           </Grid>
@@ -90,6 +103,7 @@ const BookParcel = () => {
               id="outlined-basic"
               label="parcel type"
               sx={{ width: "100%" }}
+              required
               variant="outlined"
             />
           </Grid>
@@ -103,6 +117,7 @@ const BookParcel = () => {
               id="outlined-basic"
               label="parcel weight"
               sx={{ width: "100%" }}
+              required
               variant="outlined"
             />
           </Grid>
@@ -112,6 +127,7 @@ const BookParcel = () => {
               id="outlined-basic"
               label="Receiver Name"
               sx={{ width: "100%" }}
+              required
               variant="outlined"
             />
           </Grid>
@@ -125,12 +141,14 @@ const BookParcel = () => {
               label="Receiver's Phone Number"
               variant="outlined"
               sx={{ width: "100%" }}
+              required
             />
           </Grid>
           <Grid item xs={6}>
             <TextField
               name="DeliveryAddress"
               id="outlined-basic"
+              required
               label="Parcel Delivery Address"
               variant="outlined"
               sx={{ width: "100%" }}
@@ -144,7 +162,7 @@ const BookParcel = () => {
               name="RequestedDate"
               id="outlined-basic"
               type="date"
-              label="Requested Delivery Date"
+              required
               variant="outlined"
               sx={{ width: "100%" }}
             />
@@ -154,6 +172,7 @@ const BookParcel = () => {
               name="DeliveryAddressLatitude"
               id="outlined-basic"
               label="Delivery Address Latitude"
+              required
               variant="outlined"
               sx={{ width: "100%" }}
             />
@@ -168,6 +187,7 @@ const BookParcel = () => {
               label="Delivery Address longitude"
               variant="outlined"
               sx={{ width: "100%" }}
+              required
             />
           </Grid>
           <Grid item xs={6}>
@@ -176,17 +196,31 @@ const BookParcel = () => {
               id="outlined-basic"
               label="price"
               variant="outlined"
+              required
               sx={{ width: "100%" }}
             />
           </Grid>
         </Grid>
-        <Button
+
+        <button
+          style={{
+            marginTop: "10px",
+            fontWeight: "600",
+            padding: `10px 20px`,
+            backgroundColor: "#f44647",
+            color: "#fff",
+            borderRadius: "5px",
+          }}
+        >
+          Submit
+        </button>
+        {/* <Button
           sx={{ marginTop: "10px", width: "100%" }}
           variant="contained"
           type="submit"
         >
           Submit
-        </Button>
+        </Button> */}
       </form>
     </Grid>
   );

@@ -23,7 +23,6 @@ const MyReviews = () => {
     },
   });
 
-
   const bull = (
     <Box
       component="span"
@@ -34,12 +33,24 @@ const MyReviews = () => {
   );
 
   return (
-    <Grid sx={{ marginLeft: "10px" }} container>
+    <Grid
+      padding={"10px"}
+      minHeight={"100vh"}
+      bgcolor={"#202020"}
+      sx={{ marginLeft: "10px" }}
+      container
+      marginLeft={"10px"}
+    >
       {data?.length < 0 && <Typography variant="h5">No Reviews</Typography>}
       {data?.length > 0 &&
         data?.map((book) => {
           return (
-            <Grid xs={4} item sx={{ border: "2px solid #f44647" }}>
+            <Grid
+              xs={4}
+              height={"300px"}
+              item
+              sx={{ border: "1px solid #373737" }}
+            >
               <CardContent>
                 <Grid sx={{ width: "40%", marginX: "auto" }}>
                   <img
@@ -53,6 +64,7 @@ const MyReviews = () => {
                   marginTop={"20px"}
                   textAlign={"center"}
                   variant="h5"
+                  color={"#fff"}
                   component="div"
                 >
                   {book?.name}

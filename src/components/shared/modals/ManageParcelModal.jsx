@@ -13,10 +13,24 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Grid } from "@mui/material";
 import PrimayButton from "../button/PrimayButton";
 
-const ManageParcelModal = ({handleManageButton, handleSelectDelivaryMen, handleOpen, handleClose, open }) => {
+const ManageParcelModal = ({
+  handleManageButton,
+  handleSelectDelivaryMen,
+  handleOpen,
+  handleClose,
+  open,
+}) => {
   const [Delivery_name, setDelivery_name] = useState("");
   const [AllDeliveryMen] = getAllDeliveryMen();
   const [startDate, setStartDate] = useState(new Date());
+  const [DeliveryDate, setDeliveryDate] = useState(null);
+
+  const handleDateCgange = (date) => {
+    setStartDate(date);
+    const datee = new Date(date).toDateString();
+    setDeliveryDate(datee);
+  };
+
 
   const style = {
     position: "absolute",
@@ -30,11 +44,9 @@ const ManageParcelModal = ({handleManageButton, handleSelectDelivaryMen, handleO
     p: 4,
   };
 
-
-
   const handleChange = (event) => {
-    handleSelectDelivaryMen(event.target.value)
-    setDelivery_name(event.target.value)
+    handleSelectDelivaryMen(event.target.value);
+    setDelivery_name(event.target.value);
   };
 
   return (
@@ -76,10 +88,10 @@ const ManageParcelModal = ({handleManageButton, handleSelectDelivaryMen, handleO
             <DatePicker
               width={"100%"}
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={(date) => handleDateCgange(date)}
             />
           </Grid>
-          <Grid onClick={handleManageButton}>
+          <Grid onClick={() => handleManageButton(DeliveryDate)}>
             <PrimayButton PrimayButton>assign</PrimayButton>
           </Grid>
         </Box>

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import loginimgae from "../../assets/images/login1.png";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../providers/authProvider/AuthProvider";
 import uploadeImage from "../../api/uploadeImage";
 import { createUserDB, createToken } from "../../api/auth";
@@ -34,6 +34,7 @@ const VisuallyHiddenInput = styled("input")({
 const Register = () => {
   const { createUser, updaetUserProfile } = useContext(authContext);
   const [role, setRole] = useState("");
+  const Navigate = useNavigate()
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -58,6 +59,7 @@ const Register = () => {
             if (user) {
               createUserDB(user);
               createToken(logginUser);
+              Navigate("/")
             }
           })
           .catch((e) => console.log(e.message));

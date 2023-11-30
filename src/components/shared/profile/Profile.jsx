@@ -17,8 +17,7 @@ const Profile = () => {
   const { user } = useContext(authContext);
   const [currentUser, setCurrentUser] = useState({});
   const axiosSecure = useAxiosSecure();
-  const [imageFile, setImageFile] = useState(null)
-
+  const [imageFile, setImageFile] = useState(null);
 
   useEffect(() => {
     getUser(user?.email).then((res) => {
@@ -28,8 +27,10 @@ const Profile = () => {
   }, [user]);
 
   const handleImageUplode = async () => {
-    const image = await uploadeImage(imageFile)
-    const res = await axiosSecure.put(`/updateProfile/${user?.email}`, {image});
+    const image = await uploadeImage(imageFile);
+    const res = await axiosSecure.put(`/updateProfile/${user?.email}`, {
+      image,
+    });
     console.log(res);
   };
 
@@ -48,13 +49,18 @@ const Profile = () => {
   return (
     <Grid
       container
-      bgcolor={"#e4eff4"}
+      bgcolor={"#202020"}
       justifyContent={"center"}
       alignItems={"center"}
       height={"100Vh"}
       width={"100%"}
     >
-      <Grid borderRadius={"10px"} height={"60%"} width={"40%"} bgcolor={"#fff"}>
+      <Grid
+        borderRadius={"10px"}
+        height={"60%"}
+        width={"40%"}
+        bgcolor={"#0e0e0e"}
+      >
         <Grid
           sx={{ position: "relative" }}
           marginTop={"-50px"}
@@ -84,7 +90,7 @@ const Profile = () => {
                 left: "55%",
                 fontSize: "13px",
                 bottom: "-10px",
-                bgcolor: "#5c8134",
+                bgcolor: "#f44647",
               }}
               component="label"
             >
@@ -95,7 +101,7 @@ const Profile = () => {
         </Grid>
         <Typography
           textAlign={"center"}
-          color={"#2e373e"}
+          color={"#fff"}
           marginTop={2}
           variant="h6"
         >
@@ -103,7 +109,7 @@ const Profile = () => {
         </Typography>
         <Grid container justifyContent={"center"}>
           <Typography
-            bgcolor={"#5c8134"}
+            bgcolor={"#f44647"}
             fontSize={"15px"}
             textAlign={"center"}
             variant="p"
@@ -136,10 +142,10 @@ const Profile = () => {
             container
             justifyContent={"center"}
           >
-            <Avatar alt="Remy Sharp">
+            <Avatar sx={{ backgroundColor: "#f44647" }} alt="Remy Sharp">
               <FacebookIcon />
             </Avatar>
-            <Avatar alt="Remy Sharp">
+            <Avatar sx={{ backgroundColor: "#f44647" }} alt="Remy Sharp">
               <TwitterIcon />
             </Avatar>
           </Grid>

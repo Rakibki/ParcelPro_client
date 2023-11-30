@@ -34,7 +34,7 @@ const Banner = () => {
         <Typography marginBottom={"5px"} color={"#fff"} variant="h6">
           Hello Dears! We Will Help
         </Typography>
-        <Typography  marginBottom={"10px"} color={"#fff"} variant="h4">
+        <Typography marginBottom={"10px"} color={"#fff"} variant="h4">
           Fast Delivery Services
         </Typography>
         <Typography variant="p" color={"#fff"}>
@@ -43,7 +43,7 @@ const Banner = () => {
           fermum sit eletum nulla eu placerat felis etiam tincidunt orci lacus
           id varius dolor fermum sit amet.
         </Typography>
-        <Grid position={"relative"} marginTop={"50px"} width={"100%"} item>
+        <Grid position={"relative"} marginTop={"30px"} width={"100%"} item>
           <input
             style={{
               border: "4px solid #333537",
@@ -61,9 +61,37 @@ const Banner = () => {
               position: "absolute",
               top: "10px",
               right: "20px",
-              color: "#f44647"
+              color: "#f44647",
             }}
           />
+        </Grid>
+
+        <Grid sx={{marginTop: "10px"}}>
+          <button
+            style={{
+              backgroundColor: "#111111",
+              borderRadius: "10px",
+              fontSize: "18px",
+              padding: "10px 20px",
+              fontWeight: 500,
+              color: "#fff",
+              marginRight: "5px"
+            }}
+          >
+            Services
+          </button>
+          <button
+            style={{
+              backgroundColor: "#111111",
+              borderRadius: "10px",
+              fontSize: "18px",
+              padding: "10px 20px",
+              fontWeight: 500,
+              color: "#fff",
+            }}
+          >
+            Contact Us
+          </button>
         </Grid>
       </Grid>
     </Grid>

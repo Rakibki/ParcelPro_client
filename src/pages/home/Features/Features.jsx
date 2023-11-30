@@ -26,7 +26,7 @@ const Features = () => {
             color={"#fff"}
             padding={"20px"}
             border={"2px solid #f44647"}
-            bgcolor={"#111111"}
+            bgcolor={"#303030"}
             xs={4}
             item
           >

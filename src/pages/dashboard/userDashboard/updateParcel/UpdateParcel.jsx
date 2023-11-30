@@ -2,11 +2,15 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import { Button, Grid } from "@mui/material";
+import SectionTitle from "../../../../components/shared/sectionTitle/SectionTitle";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const UpdateParcel = () => {
   const updateParcel = useLoaderData();
+  const axiosSecure = useAxiosSecure();
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     const bookInfo = {
       phoneNumber: e?.target?.phoneNumber?.value,
@@ -18,14 +22,22 @@ const UpdateParcel = () => {
       RequestedDate: e?.target?.RequestedDate?.value,
       DeliveryAddressLatitude: e?.target?.DeliveryAddressLatitude?.value,
       DeliveryAddresslongitude: e?.target?.DeliveryAddresslongitude?.value,
-      // price: totalPrice,
       status: "pending",
     };
+
+    const res = await axiosSecure.put(
+      `/updateParcel/${updateParcel._id}`,
+      bookInfo
+    );
+    if (res) {
+      Swal.fire("Parcel edited successfully");
+    }
   };
 
   return (
-    <div>
-      <form style={{ marginTop: "50px" }} onSubmit={handleUpdate}>
+    <Grid padding={"20px"} minHeight={"100vh"} bgcolor={"#fff"}>
+      <SectionTitle color="black" title={"Update Parcel"} />
+      <form  style={{ paddingTop: "50px" }} onSubmit={handleUpdate}>
         <Grid marginTop={0.5} spacing={1} container>
           <Grid item xs={6}>
             <TextField
@@ -130,26 +142,22 @@ const UpdateParcel = () => {
               defaultValue={updateParcel?.DeliveryAddresslongitude}
             />
           </Grid>
-          <Grid item xs={6}>
-            <TextField
-              // defaultValue={totalPrice}
-              id="outlined-basic"
-              label="price"
-              variant="outlined"
-              sx={{ width: "100%" }}
-              defaultValue={updateParcel?.price}
-            />
-          </Grid>
         </Grid>
-        <Button
-          sx={{ marginTop: "10px", width: "100%" }}
-          variant="contained"
+        <button
           type="submit"
+          style={{
+            marginTop: "10px",
+            fontWeight: "600",
+            padding: `10px 20px`,
+            backgroundColor: "#f44647",
+            color: "#fff",
+            borderRadius: "5px",
+          }}
         >
-          Update
-        </Button>
+          Submit
+        </button>
       </form>
-    </div>
+    </Grid>
   );
 };
 

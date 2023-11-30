@@ -31,7 +31,7 @@ const DashboardLayout = () => {
           height={"100vh"}
           bgcolor={"#111111"}
           width={100}
-          xs={3}
+          xs={2.5}
           item
           container
         >
@@ -61,7 +61,13 @@ const DashboardLayout = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid maxHeight={"100vh"} overflow={"scroll"} xs={9} item>
+        <Grid
+          bgcolor={"#202020"}
+          maxHeight={"100vh"}
+          overflow={"scroll"}
+          xs={9.5}
+          item
+        >
           <Outlet />
         </Grid>
       </Grid>
