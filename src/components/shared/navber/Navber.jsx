@@ -21,6 +21,7 @@ import logo from "../../../assets/images/logo.png";
 import { Grid, Stack } from "@mui/material";
 import PrimayButton from "../button/PrimayButton";
 import aos from "aos";
+import Nonification from "./Nonification";
 
 const Navber = () => {
   const { user, logOut } = useContext(authContext);
@@ -251,15 +252,7 @@ const Navber = () => {
                 </Menu>
               </Box>
               <MenuItem>
-                <IconButton
-                  size="large"
-                  aria-label="show 17 new notifications"
-                  color="inherit"
-                >
-                  <Badge badgeContent={17} color="error">
-                    <NotificationsIcon />
-                  </Badge>
-                </IconButton>
+                <Nonification />
               </MenuItem>
             </Toolbar>
           </Container>
