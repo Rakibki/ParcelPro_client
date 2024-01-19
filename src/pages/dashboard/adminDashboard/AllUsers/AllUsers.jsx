@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { all_users, userLength } from "../../../../api/auth";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -9,7 +9,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import PrimayButton from "../../../../components/shared/button/PrimayButton";
-import { Button, Grid } from "@mui/material";
 import makeAdmin from "../../../../api/makeAdmin";
 import Loader from "../../../../components/loader/Loader";
 import makeDeliveryMan from "../../../../api/makeDeliveryMan";
@@ -42,13 +41,13 @@ const AllUsers = () => {
 
   const handleMakeDeliveryMan = (id) => {
     makeDeliveryMan(id)
-    .then((res) => {
+    .then(() => {
       refetch();
       Swal.fire("Successfully created delivery man.");
     });
   };
   const handleMakeAdmin = async (id) => {
-    makeAdmin(id).then((res) => {
+    makeAdmin(id).then(() => {
       refetch();
       Swal.fire("Administered successfully");
     });

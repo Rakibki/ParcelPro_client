@@ -1,15 +1,15 @@
 import Banner from "../banner/Banner";
-import Features from "../Features/Features";
 import TopDeveveryMan from "../TopDeveveryMan/TopDeveveryMan";
 import Count from "../counter/Count";
 import About from "../about/About";
 import Brands from "../brands/Brands";
+import Services from "../services/Services";
 
 const Home = () => {
   return (
     <div>
       <Banner />
-      <Features />
+      <Services />
       <About />
       <TopDeveveryMan />
       <Count />
@@ -19,6 +19,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-

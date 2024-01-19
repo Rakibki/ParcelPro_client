@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Meet & Greet",
+    "desc": "If you choose our hassle free meet & greet service, your driver will be waiting inside the arrivals hall, holding a placard with your name displayed.",
+    "image": "https://airportshuttles.co.uk/static/img/meet-and-greet-icon.png"
+  },
+  {
+    "title": "Licensed Drivers",
+    "desc": "All drivers are fully licensed and have been through a DBS check to ensure there is no history which may put a client at risk.",
+    "image": "https://airportshuttles.co.uk/static/img/licensed-driver-icon.png"
+  },
+  {
+    "title": "Online Bookings",
+    "desc": "Get an instant online quote and make a booking using our easy to use booking engine. You also receive an email confirmation.",
+    "image": "https://airportshuttles.co.uk/static/img/online-bookings-icon.png"
+  },
+  {
+    "title": "Flight Monitoring",
+    "desc": "We monitor every flight and arrive when you do. This takes away the stress from you in case your flight is delayed or arriving early.",
+    "image": "https://airportshuttles.co.uk/static/img/free-flight-monitoring-icon.png"
+  },
+  {
+    "title": "Reliable Service",
+    "desc": "Reliability is key in our trade. It’s also what our clients have come to expect. Each booking is dispatched well in advance of scheduled pickup",
+    "image": "https://airportshuttles.co.uk/static/img/reliable-service-icon.png"
+  },
+  {
+    "title": "Competitive Rates",
+    "desc": "We provide a high-quality service at a very competitive price. All our prices are fixed and the price you are quoted is the price you pay.",
+    "image": "https://airportshuttles.co.uk/static/img/competitive-rates-icon.png"
+  }
+]

@@ -1,4 +1,3 @@
-import React from "react";
 import loadding from "../../../public/loadding.json";
 import Lottie from "lottie-react";
 import { Grid } from "@mui/material";

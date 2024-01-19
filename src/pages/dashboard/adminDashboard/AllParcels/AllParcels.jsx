@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getAllParcel } from "../../../../api/parcel";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import ManageParcelModal from "../../../../components/shared/modals/ManageParcelModal";
 import { updateStatus } from "../../../../api/booking";
 import PrimayButton from "../../../../components/shared/button/PrimayButton";
@@ -27,9 +27,9 @@ const AllParcels = () => {
   };
 
   const handleManageButton = async (DeliveryDate) => {
-    const res = await updateStatus(maneItem, delivaryMenId, DeliveryDate);
+    await updateStatus(maneItem, delivaryMenId, DeliveryDate);
     refetch();
-    handleClose()
+    handleClose();
   };
 
   const handleSelectDelivaryMen = (delivaryId) => {

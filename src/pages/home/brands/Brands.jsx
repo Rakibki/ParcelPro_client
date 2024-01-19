@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import { Grid } from "@mui/material";
 import brand1 from "../../../assets/images/brands/1.png";
 import brand2 from "../../../assets/images/brands/2.png";
@@ -16,11 +16,15 @@ const Brands = () => {
       <>
         <Swiper
           slidesPerView={5}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
           spaceBetween={10}
           pagination={{
             clickable: true,
           }}
-          modules={[Pagination]}
+          modules={[Pagination, Autoplay]}
           className="mySwiper"
         >
           {brands.map((brand, index) => {

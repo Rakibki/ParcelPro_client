@@ -1,6 +1,5 @@
-import React from "react";
 import bannerimage from "../../../assets/images/slider-3.jpg";
-import { Grid, Stack, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Banner = () => {

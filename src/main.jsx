@@ -5,7 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routers/routers.jsx";
 import AuthProvaider from "./providers/authProvider/AuthProvider.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Container, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 
 const queryClient = new QueryClient();
 

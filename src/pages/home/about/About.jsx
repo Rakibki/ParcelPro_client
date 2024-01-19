@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import SectionTitle from "../../../components/shared/sectionTitle/SectionTitle";
 import about1 from "../../../assets/images/about-1.jpg";
 import about2 from "../../../assets/images/about-2.jpg";
