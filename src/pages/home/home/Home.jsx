@@ -1,10 +1,9 @@
-import React from "react";
 import Banner from "../banner/Banner";
 import Features from "../Features/Features";
-import PrimayButton from "../../../components/shared/button/PrimayButton";
 import TopDeveveryMan from "../TopDeveveryMan/TopDeveveryMan";
 import Count from "../counter/Count";
 import About from "../about/About";
+import Brands from "../brands/Brands";
 
 const Home = () => {
   return (
@@ -14,8 +13,12 @@ const Home = () => {
       <About />
       <TopDeveveryMan />
       <Count />
+      <Brands />
     </div>
   );
 };
 
 export default Home;
+
+
+

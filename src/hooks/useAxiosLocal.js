@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const axioslocal = axios.create({
-    // baseURL: 'https://server-khaki-eight.vercel.app'
+    // baseURL: ' https://parcel-lime.vercel.app'
     baseURL: 'http://localhost:4000'
 })
 

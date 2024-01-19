@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import AdminMenu from "../../pages/dashboard/adminDashboard/adminMenu/AdminMenu";
 import DeliveryMenMenu from "../../pages/dashboard/DeliveryMenDashboard/deliveryMenMenu/deliveryMenMenu";
 import UserMenu from "../../pages/dashboard/userDashboard/userMenu/UserMenu";
@@ -36,7 +36,9 @@ const DashboardLayout = () => {
           container
         >
           <Grid>
-            <img style={{ margin: "10px 20px" }} width={"70%"} src={logo} />
+            <Link to={"/"}>
+              <img style={{ margin: "10px 20px" }} width={"70%"} src={logo} />
+            </Link>
             {role === "admin" ? <AdminMenu /> : ""}
             {role === "user" ? <UserMenu /> : ""}
             {role === "Delivery_Men" ? <DeliveryMenMenu /> : ""}
