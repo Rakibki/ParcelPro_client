@@ -1,32 +1,26 @@
 [
   {
-    "title": "Meet & Greet",
-    "desc": "If you choose our hassle free meet & greet service, your driver will be waiting inside the arrivals hall, holding a placard with your name displayed.",
-    "image": "https://airportshuttles.co.uk/static/img/meet-and-greet-icon.png"
+    "title": "Road freight logistic services",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, fuga veritatis dolor, voluptates perspiciatis necessitatibus optio officia cumque adipisci iusto accusantium ex tenetur quis, architecto dolorem alias nostrum. Eius, quia? Temporibus nisi aperiam fuga corrupti nemo similique laboriosam. Provident natus, optio eveniet maiores soluta perspiciatis explicabo maxime ad labore officiis enim sequi, fuga dignissimos? Sapiente possimus optio velit corporis laboriosam eveniet sunt officiis repudiandae consectetur molestias reprehenderit nisi nesciunt, tempore placeat fugit dolorum illo, quisquam similique aperiam, ut aliquid quod error. Quod obcaecati unde voluptate? Officia dolore, natus ab labore tempora blanditiis ullam atque consectetur molestias consequatur, eveniet veniam voluptates qui quo reiciendis quibusdam fugit, tenetur quisquam ea aliquam eaque. Distinctio deleniti optio reprehenderit doloremque, velit natus nemo, harum impedit, dicta repellendus odit. Inventore at neque quam veniam, molestiae nesciunt id. Voluptates, nulla consequuntur in repellendus quis tempore nesciunt cumque error saepe doloribus voluptatibus esse incidunt reprehenderit est, natus quae beatae numquam? Distinctio omnis optio maiores impedit ipsa velit architecto ipsam. Modi praesentium error saepe, iusto maxime eaque? Impedit ullam error repellendus ipsam tenetur quod nostrum officiis ipsa quos voluptates repellat magni amet, dolores quam facilis. Sed, tenetur sint! Explicabo eum a enim veritatis, expedita eveniet vel nobis hic earum.",
+    "image": "https://templates.envytheme.com/matro/default/assets/images/services-details/services-details.jpg",
+    "categories": "Road freight"
   },
   {
-    "title": "Licensed Drivers",
-    "desc": "All drivers are fully licensed and have been through a DBS check to ensure there is no history which may put a client at risk.",
-    "image": "https://airportshuttles.co.uk/static/img/licensed-driver-icon.png"
+    "title": "Rail freight logistic services",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, fuga veritatis dolor, voluptates perspiciatis necessitatibus optio officia cumque adipisci iusto accusantium ex tenetur quis, architecto dolorem alias nostrum. Eius, quia? Temporibus nisi aperiam fuga corrupti nemo similique laboriosam. Provident natus, optio eveniet maiores soluta perspiciatis explicabo maxime ad labore officiis enim sequi, fuga dignissimos? Sapiente possimus optio velit corporis laboriosam eveniet sunt officiis repudiandae consectetur molestias reprehenderit nisi nesciunt, tempore placeat fugit dolorum illo, quisquam similique aperiam, ut aliquid quod error. Quod obcaecati unde voluptate? Officia dolore, natus ab labore tempora blanditiis ullam atque consectetur molestias consequatur, eveniet veniam voluptates qui quo reiciendis quibusdam fugit, tenetur quisquam ea aliquam eaque. Distinctio deleniti optio reprehenderit doloremque, velit natus nemo, harum impedit, dicta repellendus odit. Inventore at neque quam veniam, molestiae nesciunt id. Voluptates, nulla consequuntur in repellendus quis tempore nesciunt cumque error saepe doloribus voluptatibus esse incidunt reprehenderit est, natus quae beatae numquam? Distinctio omnis optio maiores impedit ipsa velit architecto ipsam. Modi praesentium error saepe, iusto maxime eaque? Impedit ullam error repellendus ipsam tenetur quod nostrum officiis ipsa quos voluptates repellat magni amet, dolores quam facilis. Sed, tenetur sint! Explicabo eum a enim veritatis, expedita eveniet vel nobis hic earum.",
+    "image": "https://templates.envytheme.com/matro/default/assets/images/services/services-2.jpg",
+    "categories": "Rail freight"
   },
   {
-    "title": "Online Bookings",
-    "desc": "Get an instant online quote and make a booking using our easy to use booking engine. You also receive an email confirmation.",
-    "image": "https://airportshuttles.co.uk/static/img/online-bookings-icon.png"
+    "title": "Ocean freight logistic services",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, fuga veritatis dolor, voluptates perspiciatis necessitatibus optio officia cumque adipisci iusto accusantium ex tenetur quis, architecto dolorem alias nostrum. Eius, quia? Temporibus nisi aperiam fuga corrupti nemo similique laboriosam. Provident natus, optio eveniet maiores soluta perspiciatis explicabo maxime ad labore officiis enim sequi, fuga dignissimos? Sapiente possimus optio velit corporis laboriosam eveniet sunt officiis repudiandae consectetur molestias reprehenderit nisi nesciunt, tempore placeat fugit dolorum illo, quisquam similique aperiam, ut aliquid quod error. Quod obcaecati unde voluptate? Officia dolore, natus ab labore tempora blanditiis ullam atque consectetur molestias consequatur, eveniet veniam voluptates qui quo reiciendis quibusdam fugit, tenetur quisquam ea aliquam eaque. Distinctio deleniti optio reprehenderit doloremque, velit natus nemo, harum impedit, dicta repellendus odit. Inventore at neque quam veniam, molestiae nesciunt id. Voluptates, nulla consequuntur in repellendus quis tempore nesciunt cumque error saepe doloribus voluptatibus esse incidunt reprehenderit est, natus quae beatae numquam? Distinctio omnis optio maiores impedit ipsa velit architecto ipsam. Modi praesentium error saepe, iusto maxime eaque? Impedit ullam error repellendus ipsam tenetur quod nostrum officiis ipsa quos voluptates repellat magni amet, dolores quam facilis. Sed, tenetur sint! Explicabo eum a enim veritatis, expedita eveniet vel nobis hic earum.",
+    "image": "https://templates.envytheme.com/matro/default/assets/images/services/services-3.jpg",
+    "categories": "Ocean freight "
   },
   {
-    "title": "Flight Monitoring",
-    "desc": "We monitor every flight and arrive when you do. This takes away the stress from you in case your flight is delayed or arriving early.",
-    "image": "https://airportshuttles.co.uk/static/img/free-flight-monitoring-icon.png"
-  },
-  {
-    "title": "Reliable Service",
-    "desc": "Reliability is key in our trade. It’s also what our clients have come to expect. Each booking is dispatched well in advance of scheduled pickup",
-    "image": "https://airportshuttles.co.uk/static/img/reliable-service-icon.png"
-  },
-  {
-    "title": "Competitive Rates",
-    "desc": "We provide a high-quality service at a very competitive price. All our prices are fixed and the price you are quoted is the price you pay.",
-    "image": "https://airportshuttles.co.uk/static/img/competitive-rates-icon.png"
+    "title": "Air freight logistic services",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, fuga veritatis dolor, voluptates perspiciatis necessitatibus optio officia cumque adipisci iusto accusantium ex tenetur quis, architecto dolorem alias nostrum. Eius, quia? Temporibus nisi aperiam fuga corrupti nemo similique laboriosam. Provident natus, optio eveniet maiores soluta perspiciatis explicabo maxime ad labore officiis enim sequi, fuga dignissimos? Sapiente possimus optio velit corporis laboriosam eveniet sunt officiis repudiandae consectetur molestias reprehenderit nisi nesciunt, tempore placeat fugit dolorum illo, quisquam similique aperiam, ut aliquid quod error. Quod obcaecati unde voluptate? Officia dolore, natus ab labore tempora blanditiis ullam atque consectetur molestias consequatur, eveniet veniam voluptates qui quo reiciendis quibusdam fugit, tenetur quisquam ea aliquam eaque. Distinctio deleniti optio reprehenderit doloremque, velit natus nemo, harum impedit, dicta repellendus odit. Inventore at neque quam veniam, molestiae nesciunt id. Voluptates, nulla consequuntur in repellendus quis tempore nesciunt cumque error saepe doloribus voluptatibus esse incidunt reprehenderit est, natus quae beatae numquam? Distinctio omnis optio maiores impedit ipsa velit architecto ipsam. Modi praesentium error saepe, iusto maxime eaque? Impedit ullam error repellendus ipsam tenetur quod nostrum officiis ipsa quos voluptates repellat magni amet, dolores quam facilis. Sed, tenetur sint! Explicabo eum a enim veritatis, expedita eveniet vel nobis hic earum.",
+    "image": "https://templates.envytheme.com/matro/default/assets/images/services/services-4.jpg",
+    "categories": "Air freight"
   }
 ]
