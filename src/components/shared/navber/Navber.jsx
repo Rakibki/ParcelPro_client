@@ -20,6 +20,7 @@ import { Grid, Stack } from "@mui/material";
 import PrimayButton from "../button/PrimayButton";
 import aos from "aos";
 import Nonification from "./Nonification";
+import Head from "../head/Head";
 
 const Navber = () => {
   const { user, logOut } = useContext(authContext);
@@ -54,16 +55,32 @@ const Navber = () => {
   }, []);
 
   const navItems = (
-    <Grid sx={{ marginX: "auto" }}>
+    <Grid color={"#1f2428"} sx={{ marginX: "auto" }}>
       <Stack direction="row">
         <MenuItem onClick={handleCloseNavMenu}>
-          <Typography textAlign="center">Home</Typography>
+          <Typography fontWeight={600} textAlign="center">
+            Home
+          </Typography>
         </MenuItem>
         <MenuItem onClick={handleCloseNavMenu}>
-          <Typography textAlign="center">About</Typography>
+          <Typography fontWeight={600} textAlign="center">
+            About
+          </Typography>
         </MenuItem>
         <MenuItem onClick={handleCloseNavMenu}>
-          <Typography textAlign="center">Contact</Typography>
+          <Typography fontWeight={600} textAlign="center">
+            Sevices
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleCloseNavMenu}>
+          <Typography fontWeight={600} textAlign="center">
+            Blog
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleCloseNavMenu}>
+          <Typography fontWeight={600} textAlign="center">
+            Contact
+          </Typography>
         </MenuItem>
       </Stack>
     </Grid>
@@ -71,10 +88,11 @@ const Navber = () => {
 
   return (
     <div data-aos="fade-down">
+      {/* <Head /> */}
       <Grid marginX={"auto"} maxWidth={"1300px"}>
         <AppBar
           sx={{
-            bgcolor: "#000000b3",
+            backgroundColor: "#eef5ff",
             position: "fixed",
             zIndex: "54545",
             paddingY: "10px",
@@ -125,6 +143,10 @@ const Navber = () => {
                 {navItems}
               </Box>
 
+              <MenuItem>
+                <Nonification />
+              </MenuItem>
+
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   {user?.email ? (
@@ -137,7 +159,7 @@ const Navber = () => {
                     </div>
                   ) : (
                     <Link to="/login">
-                      <PrimayButton>Login</PrimayButton>
+                      <PrimayButton size="30px">Login</PrimayButton>
                     </Link>
                   )}
                 </Tooltip>
@@ -231,9 +253,6 @@ const Navber = () => {
                   )}
                 </Menu>
               </Box>
-              <MenuItem>
-                <Nonification />
-              </MenuItem>
             </Toolbar>
           </Container>
         </AppBar>

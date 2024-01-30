@@ -22,8 +22,6 @@ const Nonification = () => {
     },
   });
 
-  console.log(data);
-
   if (isPending) {
     <Loader />;
   }
@@ -32,9 +30,9 @@ const Nonification = () => {
     <Grid position={"relative"}>
       <div onClick={() => SetOpen(!open)}>
         <IconButton
+          color="#f76649"
           size="large"
           aria-label="show 17 new notifications"
-          color="inherit"
         >
           <Badge badgeContent={data?.length} color="error">
             <NotificationsIcon />
@@ -53,10 +51,16 @@ const Nonification = () => {
           <Grid container>
             {data?.map((item) => {
               return (
-                <Typography sx={{marginBottom:" 10px"}} variant="p" key={item._id}>
+                <Typography
+                  sx={{ marginBottom: " 10px" }}
+                  variant="p"
+                  key={item._id}
+                >
                   {" "}
                   <GppMaybeIcon /> {item.text}
-                  <Typography sx={{fontSize: "13px"}} variant="h6">{item?.date}</Typography>
+                  <Typography sx={{ fontSize: "13px" }} variant="h6">
+                    {item?.date}
+                  </Typography>
                 </Typography>
               );
             })}

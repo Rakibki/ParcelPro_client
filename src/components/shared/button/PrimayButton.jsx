@@ -1,14 +1,13 @@
-import { Button } from "@mui/material";
-import React from "react";
-
-const PrimayButton = ({ children, size="20px" }) => {
+const PrimayButton = ({ children, size = "20px" }) => {
   return (
     <button
       style={{
         fontWeight: "600",
         padding: `10px ${size}`,
-        backgroundColor: "#f44647",
+        backgroundColor: "#f76649",
         color: "#fff",
+        borderRadius: "5px",
+        fontFamily: "cursive",
       }}
     >
       {children}
