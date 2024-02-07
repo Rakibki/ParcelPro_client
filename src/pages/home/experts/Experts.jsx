@@ -36,9 +36,34 @@ const Experts = () => {
         </Grid>
 
         <Grid bgcolor={"#fff"} zIndex={3} marginLeft={"-80px"} padding={"10px"}>
-          <Grid container>
-            <InputText item xs={6} type={"text"} label="Your name" />
-            <InputText item xs={6} type={"email"} label="Your Email" />
+          {/* row -> 1 */}
+          <Grid spacing={1} container>
+            <Grid xs={6} item>
+              <InputText type={"text"} label="Your name" />
+            </Grid>
+            <Grid xs={6} item>
+              <InputText type={"email"} label="Your Email" />
+            </Grid>
+          </Grid>
+
+          {/* row -> 2 */}
+          <Grid spacing={1} container>
+            <Grid xs={6} item>
+              <InputText type={"text"} label="Phone Number" />
+            </Grid>
+            <Grid xs={6} item>
+              <InputText type={"text"} label="Parcel Type" />
+            </Grid>
+          </Grid>
+
+          {/* row -> 3 */}
+          <Grid spacing={1} container>
+            <Grid xs={6} item>
+              <InputText type={"text"} label="Parcel Weight" />
+            </Grid>
+            <Grid xs={6} item>
+              <InputText type={"text"} label="Receiver Name" />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
