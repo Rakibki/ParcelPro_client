@@ -3,6 +3,8 @@ import { Grid, Typography } from "@mui/material";
 import useAxiosLocal from "../../../hooks/useAxiosLocal";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
+import { FaUsers } from "react-icons/fa";
+import VisibilitySensor from "react-visibility-sensor";
 
 const Count = () => {
   const axiosLocal = useAxiosLocal();
@@ -12,97 +14,56 @@ const Count = () => {
     axiosLocal.get("/count").then((res) => setData(res.data));
   }, []);
 
-  console.log(data);
-
   return (
     <Grid
-      paddingX={"100px"}
       container
-      paddingY={"50px"}
       width={"100%"}
+      paddingY={"80px"}
       justifyContent={"center"}
-      sx={{ backgroundImage: `url(${counterImage})` }}
+      bgcolor={"#f8fafd"}
     >
       <Grid spacing={2} container width={"auto"}>
         <Grid
-          marginRight={"15px"}
+          container
+          justifyContent={"center"}
           borderRadius={"10px"}
-          paddingX={"60px"}
-          paddingY={"20px"}
-          bgcolor={"#f44647"}
+          alignItems={"center"}
+          // bgcolor={"#fff"}
           item
           sx={4}
         >
-          <Typography
-            textAlign={"center"}
-            color={"#fff"}
-            fontWeight={"600"}
-            variant="h2"
+          <Grid
+            paddingX={"25px"}
+            paddingY={"15px"}
+            item
+            border={"1px solid red"}
           >
-            <CountUp duration={2.75} end={data?.users} />
-          </Typography>
-          <Typography
-            textAlign={"center"}
-            color={"#fff"}
-            fontWeight={"600"}
-            variant="h6"
-          >
-            users
-          </Typography>
-        </Grid>
-
-        <Grid
-          borderRadius={"10px"}
-          paddingX={"60px"}
-          paddingY={"20px"}
-          marginRight={"15px"}
-          bgcolor={"#f44647"}
-          item
-          sx={4}
-        >
-          <Typography
-            textAlign={"center"}
-            color={"#fff"}
-            fontWeight={"600"}
-            variant="h2"
-          >
-            <CountUp duration={2.75} end={data?.ParcelBooked} />
-          </Typography>
-          <Typography
-            textAlign={"center"}
-            color={"#fff"}
-            fontWeight={"600"}
-            variant="h6"
-          >
-            Parcel Booked
-          </Typography>
-        </Grid>
-
-        <Grid
-          borderRadius={"10px"}
-          paddingX={"60px"}
-          paddingY={"20px"}
-          bgcolor={"#f44647"}
-          marginRight={"15px"}
-          item
-          sx={4}
-        >
-          <Typography
-            textAlign={"center"}
-            color={"#fff"}
-            fontWeight={"600"}
-            variant="h2"
-          >
-            <CountUp duration={2.75} end={data?.ParcelDelivered} />
-          </Typography>
-          <Typography
-            textAlign={"center"}
-            color={"#fff"}
-            fontWeight={"600"}
-            variant="h6"
-          >
-            Parcel Delivered
-          </Typography>
+            <VisibilitySensor partialVisibility offset={{}}>
+              {({ isVisible }) => (
+                <div style={{ height: 100 }}>
+                  <Typography
+                    textAlign={"center"}
+                    color={"#f76649"}
+                    fontWeight={"600"}
+                    variant="h2"
+                  >
+                    {isVisible ? (
+                      <CountUp duration={4} end={data?.users} />
+                    ) : null}
+                  </Typography>
+                </div>
+              )}
+            </VisibilitySensor>
+            <Typography
+              color={"#1f2428"}
+              textAlign={"center"}
+              fontWeight={"600"}
+              variant="h6"
+              marginTop={"-30px"}
+            >
+              Number of Users
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

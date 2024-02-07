@@ -35,7 +35,7 @@ const Experts = () => {
           </Typography>
         </Grid>
 
-        <Grid bgcolor={"#fff"} zIndex={3} marginLeft={"-80px"} padding={"10px"}>
+        <Grid bgcolor={"#fff"} zIndex={3} marginLeft={"-80px"} padding={"30px"}>
           {/* row -> 1 */}
           <Grid spacing={1} container>
             <Grid xs={6} item>
