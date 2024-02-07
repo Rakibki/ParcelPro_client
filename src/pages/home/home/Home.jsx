@@ -4,8 +4,10 @@ import Count from "../counter/Count";
 import About from "../about/About";
 import Brands from "../brands/Brands";
 import Services from "../services/Services";
-import Explance from "../expreace/Explance";
+// import Explance from "../expreace/Explance";
 import Choose from "../choose/Choose";
+import Solution from "../solution/Solution";
+import Experts from "../experts/Experts";
 
 const Home = () => {
   return (
@@ -14,9 +16,11 @@ const Home = () => {
       {/* <Explance /> */}
       <Choose />
       <Services />
+      <Solution />
+      <Count />
+      <Experts />
       <About />
       <TopDeveveryMan />
-      <Count />
       <Brands />
     </div>
   );
