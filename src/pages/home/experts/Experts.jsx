@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import requestSuoteImg from "../../../assets/images/request-quote-img.jpg";
+import InputText from "../../../components/inputText/InputText";
 
 const Experts = () => {
   return (
@@ -35,7 +36,10 @@ const Experts = () => {
         </Grid>
 
         <Grid bgcolor={"#fff"} zIndex={3} marginLeft={"-80px"} padding={"10px"}>
-          dsdfsdf
+          <Grid container>
+            <InputText item xs={6} type={"text"} label="Your name" />
+            <InputText item xs={6} type={"email"} label="Your Email" />
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
