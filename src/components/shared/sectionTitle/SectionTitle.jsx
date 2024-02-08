@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 
-const SectionTitle = ({ title, color="#fff" }) => {
+const SectionTitle = ({ title, color = "#fff" }) => {
   return (
     <Grid sx={{ width: "100%" }}>
       <Grid sx={{ maxWidth: "50%", marginX: "auto" }}>

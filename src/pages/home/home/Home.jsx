@@ -9,6 +9,8 @@ import Choose from "../choose/Choose";
 import Solution from "../solution/Solution";
 import Experts from "../experts/Experts";
 import OurTeam from "../ourTeam/OurTeam";
+import Testimonials from "../testimonials/Testimonials";
+import BlogSection from "../blogsSection/BlogSection";
 
 const Home = () => {
   return (
@@ -21,9 +23,11 @@ const Home = () => {
       <Count />
       <Experts />
       <OurTeam />
-      <About />
+      <Testimonials />
+      {/* <About /> */}
+      <BlogSection />
       <TopDeveveryMan />
-      <Brands />
+      {/* <Brands /> */}
     </div>
   );
 };

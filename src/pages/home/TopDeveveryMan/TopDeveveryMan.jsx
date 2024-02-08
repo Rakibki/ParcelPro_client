@@ -9,15 +9,12 @@ import { Pagination } from "swiper/modules";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../components/loader/Loader";
+import Title from "../../../components/title/Title";
 
 const TopDeveveryMan = () => {
   const axiosSecure = useAxiosSecure();
 
-  const {
-    isPending,
-    error,
-    data: topDeliverMan,
-  } = useQuery({
+  const { isPending, data: topDeliverMan } = useQuery({
     queryKey: ["topDeliverMan"],
     queryFn: async () => {
       const res = await axiosSecure.get("topFiveFeliveryMan");
@@ -30,9 +27,9 @@ const TopDeveveryMan = () => {
   }
 
   return (
-    <Grid minHeight={"100vh"} bgcolor={"#202020"}>
+    <Grid marginY={7} minHeight={"100vh"} bgcolor={"#fff"}>
       <Grid paddingTop={"60px"}>
-        <SectionTitle title={"Top Five Delivery Man"} />
+        <Title title={"Top Five Delivery Man"} desc={"Lorem, ipsum dolor."} />
       </Grid>
 
       <Grid
@@ -40,14 +37,15 @@ const TopDeveveryMan = () => {
           width: "60%",
           marginX: "auto",
           marginTop: "50px",
-          border: "2px solid #272727",
+          border: "1px solid #f76649",
+          borderRadius: "6px",
         }}
       >
         {topDeliverMan?.data?.length > 0 && (
           <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-            {topDeliverMan?.data.map((item) => {
+            {topDeliverMan?.data.map((item, index) => {
               return (
-                <SwiperSlide style={{ padding: "50px" }}>
+                <SwiperSlide key={index} style={{ padding: "50px" }}>
                   <Grid sx={{ width: "24%", marginX: "auto" }}>
                     <img
                       style={{ borderRadius: "100%" }}
@@ -59,7 +57,7 @@ const TopDeveveryMan = () => {
                     variant="h4"
                     marginTop={"10px"}
                     textAlign={"center"}
-                    color={"#fff"}
+                    color={"#f76649"}
                     component="h2"
                   >
                     {item.name}
@@ -67,7 +65,7 @@ const TopDeveveryMan = () => {
 
                   <Grid marginTop={"20px"} container justifyContent={"center"}>
                     <Rating
-                      sx={{ color: "#f44647" }}
+                      sx={{ color: "#f76649" }}
                       name="read-only"
                       value={4}
                       readOnly
