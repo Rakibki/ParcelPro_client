@@ -8,6 +8,7 @@ import Services from "../services/Services";
 import Choose from "../choose/Choose";
 import Solution from "../solution/Solution";
 import Experts from "../experts/Experts";
+import OurTeam from "../ourTeam/OurTeam";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <Solution />
       <Count />
       <Experts />
+      <OurTeam />
       <About />
       <TopDeveveryMan />
       <Brands />
