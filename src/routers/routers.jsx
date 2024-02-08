@@ -18,6 +18,7 @@ import Statistics from "../pages/dashboard/adminDashboard/Statistics/Statistics"
 import MyReviews from "../pages/dashboard/DeliveryMenDashboard/MyReviews/MyReviews";
 import Profile from "../components/shared/profile/Profile";
 import UpdateParcel from "../pages/dashboard/userDashboard/updateParcel/UpdateParcel";
+import BlogDetails from "../pages/blogDetails/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogDetails />,
       },
       {
         path: "/secret",

@@ -1,6 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import { CiCalendar } from "react-icons/ci";
 import { HiPlusCircle } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const SingleBlog = ({ blog }) => {
   return (
@@ -28,10 +29,12 @@ const SingleBlog = ({ blog }) => {
         {blog?.desc?.slice(0, 200)}...
       </Typography>
 
-      <Grid marginTop={2} alignItems={"center"} gap={1} display={"flex"}>
-        <Typography>Read More</Typography>
-        <HiPlusCircle />
-      </Grid>
+      <Link to={`/blog/${blog?.blogId}`}>
+        <Grid marginTop={2} alignItems={"center"} gap={1} display={"flex"}>
+          <Typography>Read More</Typography>
+          <HiPlusCircle />
+        </Grid>
+      </Link>
     </Grid>
   );
 };

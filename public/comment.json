@@ -1,0 +1,20 @@
+[
+  {
+    "blogId": 10001,
+    "id": "104545001",
+    "image": "https://templates.envytheme.com/matro/default/assets/images/blog-details/comments-img-1.jpg",
+    "message": "Lorem ipsum dolora sit amet, consectetur adipiscing elit sed do eiusmod tempor incdidunt labore et dolore magna aliqua. Veniam quis nostrud exercitation ullaco laboris",
+    "name": "Janie Abram",
+    "email": "joe@gmail.com",
+    "date": "'2/8/2024'"
+  },
+  {
+    "blogId": 10001,
+    "id": "1055545001",
+    "image": "https://templates.envytheme.com/matro/default/assets/images/blog-details/comments-img-2.jpg",
+    "message": "Lorem ipsum dolora sit amet, consectetur adipiscing elit sed do eiusmod tempor incdidunt labore et dolore magna aliqua. Veniam quis nostrud exercitation ullaco laboris",
+    "name": "Thomas Brand",
+    "email": "joe@gmail.com",
+    "date": "'2/8/2024'"
+  }
+]

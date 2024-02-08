@@ -4,12 +4,15 @@ import { useQuery } from "@tanstack/react-query";
 import SingleBlog from "../../../components/singleBlog/SingleBlog";
 import Title from "../../../components/title/Title";
 import { Grid } from "@mui/material";
+import useAxiosLocal from "../../../hooks/useAxiosLocal";
 
 const BlogSection = () => {
+  const axiosLocal = useAxiosLocal();
+
   const { isPending, data } = useQuery({
     queryKey: ["blog"],
     queryFn: async () => {
-      const res = await axios.get("/blog.json");
+      const res = await axiosLocal.get("/blogs");
       return res?.data;
     },
   });
