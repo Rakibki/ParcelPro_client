@@ -13,7 +13,7 @@ const Comment = ({ blogId }) => {
   const [commentValue, setCommnetValue] = useState("");
   const { user } = useContext(authContext);
 
-  const { isPending, data } = useQuery({
+  const { isPending, data, refetch } = useQuery({
     queryKey: ["comments"],
     queryFn: async () => {
       const res = await AxiosLocal.get(`/comments/${blogId}`);
@@ -36,7 +36,9 @@ const Comment = ({ blogId }) => {
         date: new Date().toLocaleDateString(),
       };
 
-      const res = await AxiosLocal.post("/comment", commentData);
+      await AxiosLocal.post("/comment", commentData);
+      refetch();
+      setCommnetValue("");
     }
   };
 
@@ -51,6 +53,7 @@ const Comment = ({ blogId }) => {
           onChange={(e) => setCommnetValue(e.target.value)}
           placeholder="Add a Comment"
           className={"inputFild"}
+          value={commentValue}
           style={{
             width: "100%",
             padding: "10px 20px",
@@ -77,8 +80,8 @@ const Comment = ({ blogId }) => {
               marginBottom={2}
               key={comment?.id}
             >
-              <Grid>
-                <img src={comment?.image} alt="" />
+              <Grid width={"100px"}>
+                <img style={{width: "100%"}} src={comment?.image} alt="" />
               </Grid>
 
               <Grid>
