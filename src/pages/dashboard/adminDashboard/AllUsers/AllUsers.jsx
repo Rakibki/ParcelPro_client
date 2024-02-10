@@ -13,6 +13,7 @@ import makeAdmin from "../../../../api/makeAdmin";
 import Loader from "../../../../components/loader/Loader";
 import makeDeliveryMan from "../../../../api/makeDeliveryMan";
 import Swal from "sweetalert2";
+import { Grid } from "@mui/material";
 
 const AllUsers = () => {
   const [currentPage, setCurrentPage] = useState(0);

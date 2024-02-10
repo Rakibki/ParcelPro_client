@@ -10,6 +10,7 @@ import logo from "../../assets/images/logo.png";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 import { authContext } from "../../providers/authProvider/AuthProvider";
+import DashboardNaver from "../../pages/dashboard/shared/dashboardNaver/DashboardNaver";
 
 const DashboardLayout = () => {
   const [role, isPending] = useRole();
@@ -21,7 +22,7 @@ const DashboardLayout = () => {
   }
 
   return (
-    <Grid>
+    <Grid bgcolor={"#f3f3f9"}>
       <Grid container>
         <Grid
           color={"#fff"}
@@ -63,13 +64,15 @@ const DashboardLayout = () => {
             </Grid>
           </Grid>
         </Grid>
+
         <Grid
-          bgcolor={"#202020"}
+          bgcolor={"#f3f3f9"}
           maxHeight={"100vh"}
           overflow={"scroll"}
           xs={9.5}
           item
         >
+          <DashboardNaver />
           <Outlet />
         </Grid>
       </Grid>

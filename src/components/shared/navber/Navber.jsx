@@ -20,7 +20,6 @@ import { Grid, Stack } from "@mui/material";
 import PrimayButton from "../button/PrimayButton";
 import aos from "aos";
 import Nonification from "./Nonification";
-import Head from "../head/Head";
 
 const Navber = () => {
   const { user, logOut } = useContext(authContext);
